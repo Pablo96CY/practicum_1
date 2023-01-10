@@ -1857,6 +1857,14 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
+"@ya.praktikum/react-developer-burger-ui-components@^1.14.0":
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/@ya.praktikum/react-developer-burger-ui-components/-/react-developer-burger-ui-components-1.14.0.tgz#50eaf4df96532feb87dca4f5b0399ef80edaacc4"
+  integrity sha512-SoGRRUaNg7Zmu6dL2sqPn87OwNye/vuE/D6U0DzkGkeTedo/EryEvV8xGsrMyWmjBr87LJ8YlrI8PNHHSn+8/A==
+  dependencies:
+    clsx "^1.1.1"
+    plural-ru "^2.0.2"
+
 abab@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.3.tgz#623e2075e02eb2d3f2475e49f99c91846467907a"
@@ -2968,6 +2976,11 @@ clone-deep@^4.0.1:
     is-plain-object "^2.0.4"
     kind-of "^6.0.2"
     shallow-clone "^3.0.0"
+
+clsx@^1.1.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
+  integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
 
 co@^4.6.0:
   version "4.6.0"
@@ -7920,6 +7933,11 @@ pkg-up@^3.1.0:
   dependencies:
     find-up "^3.0.0"
 
+plural-ru@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/plural-ru/-/plural-ru-2.0.2.tgz#5fda445d7a7f83a94020e3b81266c873a85eebb4"
+  integrity sha512-zmQv/tMG7fjF8r8JJ2U1p9dP1RgQ54RnP9nOM9dJHlcWU4mVmesKU9RgouxvyrCIU7lwOtGBYJ6cBa00UlzUZQ==
+
 pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
@@ -8886,7 +8904,7 @@ react-dev-utils@^9.0.4:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
-react-dom@18.2.0:
+react-dom@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -8970,7 +8988,7 @@ react-scripts@3.1.2:
   optionalDependencies:
     fsevents "2.0.7"
 
-react@18.2.0:
+react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
