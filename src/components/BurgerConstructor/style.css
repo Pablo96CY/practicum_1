@@ -1,0 +1,53 @@
+.section {
+  width: 50%;
+  margin-top: 100px;
+}
+
+.constructor {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.item {
+  margin-right: 16px;
+}
+
+.send_box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+  gap: 10px;
+}
+
+.items_scroll {
+  overflow-y: auto;
+  min-height: fit-content;
+  max-height: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.items_scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.items_scroll::-webkit-scrollbar-track {
+  background: #2F2F37
+}
+
+.items_scroll::-webkit-scrollbar-thumb {
+  background: #8585AD;
+}
+
+
+
