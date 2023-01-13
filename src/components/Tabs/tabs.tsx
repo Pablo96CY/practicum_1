@@ -1,13 +1,13 @@
 import React from "react";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 
-import "./style.css";
+import style from "./style.module.css";
 import localize from "../../localize";
 
 const Tabs = () => {
   const [active, setActive] = React.useState('bun')
   return (
-    <div className="tabs_container">
+    <div className={style.tabs_container}>
       <Tab 
         value="bun" 
         active={active === 'bun'} 

@@ -3,7 +3,7 @@
   margin-top: 100px;
 }
 
-.constructor {
+.burger_constructor {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
