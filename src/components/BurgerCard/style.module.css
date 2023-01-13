@@ -1,0 +1,22 @@
+.ingredient {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  margin-bottom: 40px;
+  margin-left: 16px;
+  width: 40%;
+}
+
+.ingredients_icon_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  gap: 10px;
+}
+
+.ingredients_name_box {
+  display: flex;
+  justify-content: center;
+}

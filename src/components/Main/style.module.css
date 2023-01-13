@@ -1,0 +1,10 @@
+.index {
+  background-color: #131316;
+  text-align: center;
+}
+
+.main {
+  margin: auto;
+  display: flex;
+  width: 78%;
+}

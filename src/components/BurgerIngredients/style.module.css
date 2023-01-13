@@ -1,0 +1,34 @@
+.ingredients_container {
+  width: 50%;
+  margin-top: 40px;
+}
+
+.ingredients_box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.titles {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.ingredients_scroll {
+  overflow-y: auto;
+  min-height: fit-content;
+  max-height: 555px;
+}
+
+.ingredients_scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.ingredients_scroll::-webkit-scrollbar-track {
+  background: #2F2F37
+}
+
+.ingredients_scroll::-webkit-scrollbar-thumb {
+  background: #8585AD;
+}
+
