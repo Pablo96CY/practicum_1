@@ -1,0 +1,40 @@
+.modal_container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 720px;
+  height: fit-content;
+  background-color: #1c1c21;
+  color: #fff;
+  font-size: 2rem;
+  border-radius: 40px;
+}
+
+.modal_box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 40px;
+  margin-left: 40px;
+  margin-top: 40px;
+  height: 30px;
+}
+
+.close_btn {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.composition {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+

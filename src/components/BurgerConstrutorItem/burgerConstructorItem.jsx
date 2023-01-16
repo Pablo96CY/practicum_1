@@ -2,13 +2,12 @@ import React from "react";
 import { ConstructorElement,DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import style from "./style.module.css";
-import data from "../../data";
-import { Ingredients } from "../../enum";
+import { Ingredients } from "../../utils/enum";
 
-const BurgerConstructorItem = () => {
+const BurgerConstructorItem = ({data}) => {
   return (
     <>
-      {data.map(item => (
+      {data.data.map(item => (
         <div key={item._id}
           className={item.type === Ingredients.bun ? style.bun : style.item} 
         >

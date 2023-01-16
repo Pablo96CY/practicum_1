@@ -2,7 +2,7 @@ import React from "react";
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import style from "./style.module.css";
-import localize from "../../localize";
+import localize from "../../utils/localize";
 
 const Tabs = () => {
   const [active, setActive] = React.useState('bun')
