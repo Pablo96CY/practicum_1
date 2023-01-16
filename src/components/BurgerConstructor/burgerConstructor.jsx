@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import style from "./style.module.css";
@@ -8,13 +8,14 @@ import Modal from "../Modal/modal";
 import OrderDetails from "../OrderDetails/orderDetails";
 
 const BurgerConstructor = ({data}) => {
-  const sum = () => {
+  const sum = useMemo(() => {
     let value = 0;
     data.data.map(item => {
       value = value + item.price;
     })
     return value;
-  }
+  }, [data]);
+
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -39,7 +40,7 @@ const BurgerConstructor = ({data}) => {
         </div>
         <div className={style.send_box}>
           <div className={style.box}>
-            <text className="text_type_digits-medium">{sum()}</text>
+            <text className="text_type_digits-medium">{sum}</text>
             <CurrencyIcon type="primary"/>
           </div>
           <Button 

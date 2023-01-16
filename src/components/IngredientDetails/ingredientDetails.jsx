@@ -1,7 +1,8 @@
 import React from "react";
-import localize from "../../utils/localize";
 
+import localize from "../../utils/localize";
 import style from "./style.module.css";
+import { mainDataPropTypes } from "../../utils/propTypes";
 
 const IngredientDetails = ({ data }) => {
   return (
@@ -49,5 +50,9 @@ const IngredientDetails = ({ data }) => {
     </div>
   );
 }
+
+IngredientDetails.propTypes = {
+  data: mainDataPropTypes.isRequired,
+};
 
 export default IngredientDetails;

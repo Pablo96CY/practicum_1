@@ -4,6 +4,7 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import style from "./style.module.css";
 import Modal from "../Modal/modal";
 import IngredientDetails from "../IngredientDetails/ingredientDetails";
+import { mainDataPropTypes } from "../../utils/propTypes";
 import localize from "../../utils/localize";
 
 const Card = ({data}) => {
@@ -37,5 +38,9 @@ const Card = ({data}) => {
     </>
   )
 }
+
+Card.propTypes = {
+  data: mainDataPropTypes.isRequired,
+};
 
 export default Card
