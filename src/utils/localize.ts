@@ -12,5 +12,9 @@ export default {
   OrderIdentificator: 'Идентификатор заказа',
   OrderPreparing: 'Ваш заказ начали готовить',
   OrderWaiting: 'Дождитесь готовности на орбитальной станции',
-  Error: 'Произошла ошибка'
+  Error: 'Произошла ошибка',
+  Callories: 'Калории, ккал',
+  Fats: 'Белки, г',
+  Proteins: 'Жиры, г',
+  Carbohydrates: ' Углеводы, г'
 }

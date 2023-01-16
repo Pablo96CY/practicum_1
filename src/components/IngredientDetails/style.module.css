@@ -13,8 +13,18 @@
   text-align: center;
 }
 
-.composition {
+.modal_content_body {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 40px;
+}
+
+.modal_content_body_item {
+  margin-right: 20px;
+}
+
+.modal_content_title {
+  margin-top: 16px;
+  margin-bottom: 32px;
 }

@@ -27,7 +27,7 @@ const BurgerIngredients = ({data}) => {
           ))}
         </div>
         <div className={style.titles}>
-          <h1 className="text text_type_main-medium ">{localize.Sauces}</h1>
+          <h1 className="text text_type_main-medium">{localize.Sauces}</h1>
         </div>
         <div className={style.ingredients_box}>
           {sauces.map(sauce => (

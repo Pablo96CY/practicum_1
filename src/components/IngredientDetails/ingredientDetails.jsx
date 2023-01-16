@@ -1,12 +1,9 @@
 import React from "react";
+import localize from "../../utils/localize";
 
 import style from "./style.module.css";
 
-interface IProps {
-  data: any
-}
-
-function IngredientDetails({ data }: IProps) {
+const IngredientDetails = ({ data }) => {
   return (
     <div className={style.modal_content}>
       <img
@@ -14,35 +11,35 @@ function IngredientDetails({ data }: IProps) {
         alt={data.name}
         className={style.image}
       />
-      <p className="mt-4 mb-8 text text_type_main-medium">{data.name}</p>
-      <div className={`mb-10 ${style.composition}`}>
-        <div className={`mr-5 ${style.composition_item}`}>
+      <p className={`text text_type_main-medium ${style.modal_content_title}`}>{data.name}</p>
+      <div className={style.modal_content_body}>
+        <div className={style.modal_content_body_item}>
           <p className="text text_type_main-default text_color_inactive">
-            Калории, ккал
+            {localize.Callories}
           </p>
           <p className="text text_type_digits-default text_color_inactive">
             {data.calories}
           </p>
         </div>
-        <div className={`mr-5 ${style.composition_item}`}>
+        <div className={style.modal_content_body_item}>
           <p className="text text_type_main-default text_color_inactive">
-            Белки, г
+            {localize.Proteins}
           </p>
           <p className="text text_type_digits-default text_color_inactive">
             {data.proteins}
           </p>
         </div>
-        <div className={`mr-5 ${style.composition_item}`}>
+        <div className={style.modal_content_body_item}>
           <p className="text text_type_main-default text_color_inactive">
-            Жиры, г
+            {localize.Fats}
           </p>
           <p className="text text_type_digits-default text_color_inactive">
             {data.fat}
           </p>
         </div>
-        <div className={style.composition_item}>
+        <div>
           <p className="text text_type_main-default text_color_inactive">
-            Углеводы, г
+            {localize.Carbohydrates}
           </p>
           <p className="text text_type_digits-default text_color_inactive">
             {data.carbohydrates}

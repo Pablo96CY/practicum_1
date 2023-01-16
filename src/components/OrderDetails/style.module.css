@@ -19,6 +19,7 @@
 .identificator_order_text {
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin-top: 32px;
 }
 
 .success_icon {

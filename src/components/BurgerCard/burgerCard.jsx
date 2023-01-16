@@ -5,7 +5,6 @@ import style from "./style.module.css";
 import Modal from "../Modal/modal";
 import IngredientDetails from "../IngredientDetails/ingredientDetails";
 import localize from "../../utils/localize";
-import { Ingredient } from "../../utils/const";
 
 const Card = ({data}) => {
   const [isOpen, setIsOpen] = useState(false);

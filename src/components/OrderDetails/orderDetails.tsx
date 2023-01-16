@@ -15,7 +15,7 @@ const OrderDetails = ({ data }: IProps) => {
         {data}
       </p>
       <p
-        className={`text text_type_digits-small mt-8 ${style.identificator_order_text}`}
+        className={`text text_type_digits-small ${style.identificator_order_text}`}
       >
         {localize.OrderIdentificator}
       </p>

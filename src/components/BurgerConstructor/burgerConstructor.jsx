@@ -26,9 +26,6 @@ const BurgerConstructor = ({data}) => {
     setIsOpen(false);
   };
 
-  
-
-
   return (
     <section className={style.section}>
       {isOpen && (
