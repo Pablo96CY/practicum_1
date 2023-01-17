@@ -1,5 +1,9 @@
 export const Ingredients = {
   bun: "bun",
   sauce: "sauce",
-  main: "main"
+  main: "main",
+}
+
+export const KeyBoard = {
+  escape: 'esc',
 }

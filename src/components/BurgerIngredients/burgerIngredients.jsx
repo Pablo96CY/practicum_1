@@ -2,15 +2,14 @@ import React from "react";
 
 import style from "./style.module.css";
 import Card from "../BurgerCard/burgerCard";
-import data from "../../data";
 import Tabs from "../Tabs/tabs";
-import localize from "../../localize";
-import { Ingredients } from "../../enum";
+import localize from "../../utils/localize";
+import { Ingredients } from "../../utils/enum";
 
-const BurgerIngredients = () => {
-  const buns = data.filter(item => item.type === Ingredients.bun);
-  const sauces = data.filter(item => item.type === Ingredients.sauce);
-  const mains = data.filter(item => item.type === Ingredients.main);
+const BurgerIngredients = ({data}) => {
+  const buns = data.data.filter(item => item.type === Ingredients.bun);
+  const sauces = data.data.filter(item => item.type === Ingredients.sauce);
+  const mains = data.data.filter(item => item.type === Ingredients.main);
 
   return (
     <section className={style.ingredients_container}>
@@ -28,7 +27,7 @@ const BurgerIngredients = () => {
           ))}
         </div>
         <div className={style.titles}>
-          <h1 className="text text_type_main-medium ">{localize.Sauces}</h1>
+          <h1 className="text text_type_main-medium">{localize.Sauces}</h1>
         </div>
         <div className={style.ingredients_box}>
           {sauces.map(sauce => (
