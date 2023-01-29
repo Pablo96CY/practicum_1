@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useMemo } from "react";
+import { useSelector } from 'react-redux';
 
 import style from "./style.module.css";
 import Card from "../BurgerCard/burgerCard";
@@ -6,10 +7,20 @@ import Tabs from "../Tabs/tabs";
 import localize from "../../utils/localize";
 import { Ingredients } from "../../utils/enum";
 
-const BurgerIngredients = ({data}) => {
-  const buns = data.data.filter(item => item.type === Ingredients.bun);
-  const sauces = data.data.filter(item => item.type === Ingredients.sauce);
-  const mains = data.data.filter(item => item.type === Ingredients.main);
+const BurgerIngredients = () => {
+  const data  = useSelector((state) => state.burgerIngredients);
+
+  const buns = useMemo(() => {
+    return data.data.filter(item => item.type === Ingredients.bun);
+  }, [data]);
+
+  const sauces = useMemo(() => {
+    return data.data.filter(item => item.type === Ingredients.sauce);
+  }, [data]);
+  
+  const mains = useMemo(() => {
+    return data.data.filter(item => item.type === Ingredients.main);
+  }, [data]);
 
   return (
     <section className={style.ingredients_container}>

@@ -7,3 +7,8 @@ export const Ingredients = {
 export const KeyBoard = {
   escape: 'esc',
 }
+
+export const Methods = {
+  POST: 'POST',
+  GET: 'GET'
+}

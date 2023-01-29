@@ -7,7 +7,7 @@ import { Ingredients } from "../../utils/enum";
 const BurgerConstructorItem = ({data}) => {
   return (
     <>
-      {data.data.map(item => (
+      {data.map(item => (
         <div key={item._id}
           className={item.type === Ingredients.bun ? style.bun : style.item} 
         >

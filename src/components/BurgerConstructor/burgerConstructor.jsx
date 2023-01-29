@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import { useSelector } from 'react-redux';
 import { CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import style from "./style.module.css";
@@ -7,10 +8,12 @@ import BurgerConstructorItem from "../BurgerConstrutorItem/burgerConstructorItem
 import Modal from "../Modal/modal";
 import OrderDetails from "../OrderDetails/orderDetails";
 
-const BurgerConstructor = ({data}) => {
+const BurgerConstructor = () => {
+  const { data } = useSelector((state) => state.burgerIngredients);
+
   const sum = useMemo(() => {
     let value = 0;
-    data.data.map(item => {
+    data.map(item => {
       value = value + item.price;
     })
     return value;
