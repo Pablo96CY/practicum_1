@@ -32,3 +32,8 @@
   background: #8585AD;
 }
 
+.tabs_container {
+  display: flex;
+  margin-bottom: 40px;
+}
+
