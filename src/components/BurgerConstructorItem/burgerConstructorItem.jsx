@@ -32,12 +32,17 @@ const BurgerConstructorMainIngredient = ({ item, index, onDelete }) => {
   Drag(Drop(ref));
 
   return (
-    <li className={style.main_item_container} key={index} ref={ref}>
+    <li 
+      className={style.main_item_container} 
+      key={index} 
+      ref={ref}
+    >
       <DragIcon type="primary" />
       <ConstructorElement
         text={item.name}
         price={item.price}
         thumbnail={item.image}
+        extraClass={style.ingredient_item}
         handleClose={() => {
           onDelete(index);
         }}

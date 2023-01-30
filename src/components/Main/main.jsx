@@ -20,10 +20,12 @@ const App = () => {
     <div className="index text text_type_main-default">
       <Header/>
       <main className={style.main}>
-        <DndProvider backend={HTML5Backend}>
-          <BurgerIngredients/>
-          <BurgerConstructor/>
-        </DndProvider>
+        <div className={style.body}>
+          <DndProvider backend={HTML5Backend}>
+            <BurgerIngredients/>
+            <BurgerConstructor/>
+          </DndProvider>
+        </div>
       </main>
     </div>
   );

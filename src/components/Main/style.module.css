@@ -1,10 +1,11 @@
-.index {
-  background-color: #131316;
-  text-align: center;
-}
-
 .main {
   margin: auto;
   display: flex;
-  width: 78%;
+  width: 70%;
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

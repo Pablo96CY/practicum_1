@@ -34,11 +34,11 @@ const Card = ({data, numberOfItems}) => {
       <div className={style.ingredient} onClick={onOpen} ref={dragRef}>
         <img src={data.image}/>
         <div className={style.ingredients_icon_box}>
-          <text className="text_type_digits-default">{data.price}</text>
+          <span className="text_type_digits-default">{data.price}</span>
           <CurrencyIcon type="primary"/>
         </div>
         <div className={style.ingredients_name_box}>
-          <text>{data.name}</text>
+          <span>{data.name}</span>
           {numberOfItems && (
             <Counter 
               count={numberOfItems} 

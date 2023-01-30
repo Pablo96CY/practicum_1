@@ -97,56 +97,58 @@ const BurgerConstructor = () => {
         </Modal>
       )}
       <div className={style.burger_constructor}>
-        <div className={style.items_scroll}>
-          {bun && (
-            <div key={`${bun._id}_top`} ref={dropTopBun} className={style.bun}>
-              <ConstructorElement
-                type="top"
-                isLocked
-                key={`${bun._id}_top`}
-                text={bun.name}
-                price={bun.price}
-                thumbnail={bun.image}
-              />
-            </div>
-          )}
-          <ul className={style.items_scroll} ref={dropTargetIngredient}>
-            {items && !!items.length && items.map((item, index) => (
-              <BurgerConstructorMainIngredient 
-                key={uuid()} 
-                item={item} 
-                index={index} 
-                onDelete={deleteItem} 
-              />
-            ))}
-          </ul>
-          {bun && (
-            <div key={`${bun._id}_bottom`} ref={dropBottomBun} className={style.bun}>
-              <ConstructorElement
-                type="bottom"
-                isLocked
-                key={`${bun._id}_bottom`}
-                text={bun.name}
-                price={bun.price}
-                thumbnail={bun.image}
-              />
-            </div>
-          )}
-        </div>
-        <div className={style.send_box}>
-          <div className={style.box}>
-            <text className="text_type_digits-medium">{sum}</text>
-            <CurrencyIcon type="primary"/>
+        {bun && (
+          <div key={`${bun._id}_top`} ref={dropTopBun}>
+            <ConstructorElement
+              type="top"
+              isLocked
+              key={`${bun._id}_top`}
+              text={bun.name}
+              price={bun.price}
+              thumbnail={bun.image}
+              extraClass={style.bun}
+            />
           </div>
-          <Button 
-            htmlType="button" 
-            type="primary" 
-            size="large"
-            onClick={onOpen}
-          >
-            {localize.Checkout}
-          </Button>  
+        )}
+        <ul className={style.items_scroll} ref={dropTargetIngredient}>
+          {items && !!items.length && items.map((item, index) => (
+            <BurgerConstructorMainIngredient 
+              key={uuid()} 
+              item={item} 
+              index={index} 
+              onDelete={deleteItem} 
+            />
+          ))}
+        </ul>
+        {bun && (
+          <div key={`${bun._id}_bottom`} ref={dropBottomBun}>
+            <ConstructorElement
+              type="bottom"
+              isLocked
+              key={`${bun._id}_bottom`}
+              text={bun.name}
+              price={bun.price}
+              thumbnail={bun.image}
+              extraClass={style.bun}
+            />
+          </div>
+        )}
+      </div>
+      <div className={style.send_box}>
+        <div className={style.box}>
+          {sum && (
+            <span className="text_type_digits-medium">{sum}</span>
+          )}
+          <CurrencyIcon type="primary"/>
         </div>
+        <Button 
+          htmlType="button" 
+          type="primary" 
+          size="large"
+          onClick={onOpen}
+        >
+          {localize.Checkout}
+        </Button>  
       </div>
     </section>
   )

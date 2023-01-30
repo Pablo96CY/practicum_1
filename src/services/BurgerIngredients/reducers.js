@@ -25,7 +25,7 @@ export const ingredientsDataReducer = (state = ingredientsDataState, action) => 
         ...state, 
         isLoad: false, 
         isError: true, 
-        data: action.data 
+        data: []
       };
     default:
       return state;

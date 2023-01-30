@@ -34,6 +34,7 @@ export const newOrderReducer = (state = newOrderState, action) => {
         ...state,
         isLoad: false,
         isError: true,
+        newOrderNumber: null
       };
     }
     case ORDER_OPEN_MODAL: {
