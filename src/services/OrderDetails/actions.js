@@ -3,6 +3,8 @@ import { createNewOrders } from "../../utils/methods";
 export const ORDER_REQUEST = "ORDER_REQUEST";
 export const ORDER_SUCCESS = "ORDER_SUCCESS";
 export const ORDER_ERROR = "ORDER_ERROR";
+export const ORDER_OPEN_MODAL = "ORDER_OPEN_MODAL";
+export const ORDER_CLOSE_MODAL = "ORDER_CLOSE_MODAL";
 
 export const createNewOrder = (ingredients) => {
   return (dispatch) => {

@@ -1,0 +1,6 @@
+.main_item_container {
+  display: flex;
+  align-items: center;
+  cursor: move;
+  margin-right: 16px;
+}

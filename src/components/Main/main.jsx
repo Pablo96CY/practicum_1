@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import { ingredientsData } from '../../services/BurgerIngredients/actions';
 import BurgerConstructor from '../BurgerConstructor/burgerConstructor';
@@ -11,17 +13,17 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(ingredientsData());
+    dispatch(ingredientsData());
   }, [dispatch]);
-
-
 
   return (
     <div className="index text text_type_main-default">
       <Header/>
       <main className={style.main}>
-        <BurgerIngredients/>
-        <BurgerConstructor/>
+        <DndProvider backend={HTML5Backend}>
+          <BurgerIngredients/>
+          <BurgerConstructor/>
+        </DndProvider>
       </main>
     </div>
   );

@@ -1,38 +1,49 @@
 import { Ingredients } from "../../utils/enum";
-import { ADD_ITEM, DELETE_ITEM, CLEAR_MODAL } from "./actions";
+import { ADD_ITEM, DELETE_ITEM, REPLACE_ITEM } from "./actions";
 
 const constructorState = {
   items: [],
-  bun: null,
+  bun: {},
 };
 
 export const constructorReducer = (state = constructorState, action) => {
   switch (action.type) {
     case ADD_ITEM: {
-      if (action.payload.type === Ingredients.bun) {
+      if (action.item.type === Ingredients.bun) {
         return { 
           ...state, 
-          bun: action.payload, 
+          bun: action.item,
         };
-      }
-      return {
+      } else return {
         ...state,
         items: [
           ...state.items, 
-          action.payload,
+          action.item,
         ],
       };
     }
+    case REPLACE_ITEM:
+      const newState = { 
+        ...state, 
+        items: [
+          ...state.items
+        ] 
+      };
+      [
+        newState.items[action.from], 
+        newState.items[action.to]
+      ] = 
+      [
+        newState.items[action.to], 
+        newState.items[action.from]
+      ];
+      return newState;
     case DELETE_ITEM: {
       return {
         ...state,
-        items: [...state.items].filter((item, index) => index !== action.payload),
-      };
-    }
-    case CLEAR_MODAL: {
-      return {
-        items: [],
-        bun: null,
+        items: [...state.items].filter(
+          (item, index) => index !== action.index
+        ),
       };
     }
     default:

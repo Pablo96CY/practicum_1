@@ -1,7 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Provider } from 'react-redux';
 
 import './index.css';
@@ -10,11 +8,11 @@ import * as serviceWorker from './serviceWorker';
 import mainStore from './services/mainStore';
 
 render(
-    <Provider store={mainStore}>
-      <DndProvider backend={HTML5Backend}>
+  <React.StrictMode>
+      <Provider store={mainStore}>
         <App />
-      </DndProvider>
-    </Provider>, 
+      </Provider>
+    </React.StrictMode>, 
   document.getElementById('root'));
 
 serviceWorker.unregister();

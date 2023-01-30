@@ -8,7 +8,9 @@ import localize from "../../utils/localize";
 import { Ingredients } from "../../utils/enum";
 
 const BurgerIngredients = () => {
-  const data  = useSelector((state) => state.burgerIngredients);
+  const data = useSelector(store => store.burgerIngredients);
+
+  const { items, bun } = useSelector(store => store.burgerConstructor);
 
   const [activeTab, setActiveTab] = useState(Ingredients.bun);
 
@@ -18,7 +20,7 @@ const BurgerIngredients = () => {
 
   const mainTab = useRef(null);
 
-  const buns = useMemo(() => {
+  const allBuns = useMemo(() => {
     return data.data.filter(item => item.type === Ingredients.bun);
   }, [data]);
 
@@ -53,6 +55,27 @@ const BurgerIngredients = () => {
       setActiveTab(Ingredients.main);
     }
   }
+
+  const counterIngredients = useMemo(() => {
+    const count = {};
+
+    items.map(item => {
+      if (!(item._id in count)) {
+        count[item._id] = 0;
+      }
+      count[item._id] = count[item._id] + 1;
+    })
+
+    return count;
+  }, [items]);
+
+  const counterBuns = useMemo(() => {
+    const count = {};
+
+    count[bun._id] = 2;
+
+    return count;
+  }, [bun]);
 
   return (
     <section className={style.ingredients_container}>
@@ -96,8 +119,8 @@ const BurgerIngredients = () => {
           <h1 className="text text_type_main-medium">{localize.Buns}</h1>
         </div>
         <div className={style.ingredients_box}>
-          {buns.map(bun => (
-            <Card key={bun._id} data={bun}/>
+          {allBuns.map(bun => (
+            <Card key={bun._id} data={bun} numberOfItems={counterBuns[bun._id]}/>
           ))}
         </div>
         <div className={style.titles} ref={sauceTab}>
@@ -105,7 +128,7 @@ const BurgerIngredients = () => {
         </div>
         <div className={style.ingredients_box}>
           {sauces.map(sauce => (
-            <Card key={sauce._id} data={sauce}/>
+            <Card key={sauce._id} data={sauce} numberOfItems={counterIngredients[sauce._id]}/>
           ))}
         </div>
         <div className={style.titles} ref={mainTab}>
@@ -113,7 +136,7 @@ const BurgerIngredients = () => {
         </div>
         <div className={style.ingredients_box}>
           {mains.map(main => (
-            <Card key={main._id} data={main}/>
+            <Card key={main._id} data={main} numberOfItems={counterIngredients[main._id]}/>
           ))}
         </div>
       </div>
