@@ -1,0 +1,11 @@
+.main_item_container {
+  display: flex;
+  align-items: center;
+  cursor: move;
+  margin-top: 16px;
+}
+
+.ingredient_item {
+  background: var(--background);
+  margin-left: 8px;
+}

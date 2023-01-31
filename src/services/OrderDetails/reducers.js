@@ -1,0 +1,57 @@
+import { 
+  ORDER_REQUEST, 
+  ORDER_SUCCESS, 
+  ORDER_ERROR,
+  ORDER_OPEN_MODAL,
+  ORDER_CLOSE_MODAL
+ } from "./actions";
+
+const newOrderState = {
+  isLoad: false,
+  isError: false,
+  isOpen: false,
+  newOrderNumber: null,
+};
+
+export const newOrderReducer = (state = newOrderState, action) => {
+  switch (action.type) {
+    case ORDER_REQUEST: {
+      return {
+        ...state,
+        isLoad: true,
+      };
+    }
+    case ORDER_SUCCESS: {
+      return {
+        ...state,
+        isLoad: false,
+        isError: false,
+        new: action.order,
+      };
+    }
+    case ORDER_ERROR: {
+      return {
+        ...state,
+        isLoad: false,
+        isError: true,
+        newOrderNumber: null
+      };
+    }
+    case ORDER_OPEN_MODAL: {
+      return {
+        ...state,
+        isOpen: true,
+        newOrderNumber: 645328
+      };
+    }
+    case ORDER_CLOSE_MODAL: {
+      return {
+        ...state,
+        isOpen: false,
+        newOrderNumber: null
+      };
+    }
+    default:
+      return state;
+  }
+};

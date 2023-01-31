@@ -1,23 +1,22 @@
 .ingredients_container {
-  width: 50%;
-  margin-top: 40px;
+  flex: 0 0 610px;
 }
 
 .ingredients_box {
+  gap: 50px;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
 }
 
 .titles {
-  display: flex;
+  margin-top: 40px;
   margin-bottom: 20px;
 }
 
 .ingredients_scroll {
   overflow-y: auto;
-  min-height: fit-content;
   max-height: 555px;
+  position: relative;
 }
 
 .ingredients_scroll::-webkit-scrollbar {
@@ -30,5 +29,10 @@
 
 .ingredients_scroll::-webkit-scrollbar-thumb {
   background: #8585AD;
+}
+
+.tabs_container {
+  display: flex;
+  margin-bottom: 40px;
 }
 
