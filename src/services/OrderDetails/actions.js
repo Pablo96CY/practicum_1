@@ -14,10 +14,10 @@ export const createNewOrder = (ingredients) => {
     createNewOrders(ingredients.map((ingredient) => ingredient._id)).then(data => {
       dispatch({ 
         type: ORDER_SUCCESS, 
-        new: data 
+        newOrderNumber: data.order.number 
       });
     })
-    .catch(err => {
+    .catch(() => {
       dispatch({ 
         type: ORDER_ERROR 
       });

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDrag } from "react-dnd";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from 'react-router-dom';
 import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import style from "./style.module.css";
@@ -7,9 +9,15 @@ import Modal from "../Modal/modal";
 import IngredientDetails from "../IngredientDetails/ingredientDetails";
 import { mainDataPropTypes } from "../../utils/propTypes";
 import localize from "../../utils/localize";
+import { BASE_ROOT, INGREDIENTS_ROOT } from "../../utils/routes";
+import { INGREDIENT_INFO_MODAL_CLOSE, INGREDIENT_INFO_MODAL_OPEN } from "../../services/IngredientsDetails/actions";
 
 const Card = ({data, numberOfItems}) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { isOpen } = useSelector(store => store.ingredientsDetails);
 
   const [, dragRef] = useDrag({
     type: data.type,
@@ -17,18 +25,32 @@ const Card = ({data, numberOfItems}) => {
   });
 
   const onOpen = () => {
-    setIsOpen(true);
+    navigate(
+      `${INGREDIENTS_ROOT}/${data._id}`, 
+      { 
+        replace: true, 
+        state: { 
+          background: location,
+        } 
+      }
+    );
+    dispatch({
+      type: INGREDIENT_INFO_MODAL_OPEN
+    })
   };
   
   const onClose = () => {
-    setIsOpen(false);
+    navigate(BASE_ROOT, { replace: true });
+    dispatch({
+      type: INGREDIENT_INFO_MODAL_CLOSE
+    })
   };
 
   return (
     <>
       {isOpen && (
         <Modal onClose={onClose} info={localize.IngredientsDetails}>
-          <IngredientDetails data={data}/>
+          <IngredientDetails/>
         </Modal>
       )}
       <div className={style.ingredient} onClick={onOpen} ref={dragRef}>

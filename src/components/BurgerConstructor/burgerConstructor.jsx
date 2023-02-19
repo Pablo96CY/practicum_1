@@ -1,5 +1,6 @@
 import React, { useMemo, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "react-router";
 import { useDrop } from "react-dnd";
 import { v4 as uuid } from 'uuid';
 import { CurrencyIcon, Button, ConstructorElement } from "@ya.praktikum/react-developer-burger-ui-components";
@@ -11,16 +12,25 @@ import OrderDetails from "../OrderDetails/orderDetails";
 import { Ingredients } from "../../utils/enum";
 import { ADD_ITEM, DELETE_ITEM } from "../../services/BurgerConstructor/actions";
 import BurgerConstructorMainIngredient from "../BurgerConstructorItem/burgerConstructorItem";
-import { ORDER_CLOSE_MODAL, ORDER_OPEN_MODAL } from "../../services/OrderDetails/actions";
+import { createNewOrder, ORDER_CLOSE_MODAL, ORDER_OPEN_MODAL } from "../../services/OrderDetails/actions";
+import { LOGIN_ROOT } from "../../utils/routes";
+import { getUserDataAction } from "../../services/UserData/actions";
 
 const BurgerConstructor = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { items, bun } = useSelector(store => store.burgerConstructor);
 
   const { newOrderNumber, isOpen } = useSelector(store => store.orderDetails);
+
+  const { user } = useSelector(store => store.userReducer);
   
   const data = useSelector(store => store.burgerIngredients);
+
+  useEffect(() => {
+    dispatch(getUserDataAction());
+  }, [dispatch]);
 
   useEffect(() => {
     data.data.map(item => {
@@ -29,7 +39,15 @@ const BurgerConstructor = () => {
         item: item 
       });
     })
-}, [data]);
+  }, [data]);
+
+  useEffect(() => {
+    if(newOrderNumber) {
+      dispatch({ 
+        type: ORDER_OPEN_MODAL, 
+      });
+    }
+  }, [dispatch, newOrderNumber]);
 
   const [, dropTopBun] = useDrop({
     accept: [Ingredients.bun],
@@ -78,9 +96,11 @@ const BurgerConstructor = () => {
   }, [items, bun]);
 
   const onOpen = () => {
-    dispatch({ 
-      type: ORDER_OPEN_MODAL, 
-    });
+    if(!!user?.name && user.name !== '') {
+      dispatch(createNewOrder([...items, bun, bun]));
+    } else {
+      navigate(LOGIN_ROOT, { replace: true });
+    }
   };
 
   const onClose = () => {

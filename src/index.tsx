@@ -1,6 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+import { DndProvider } from 'react-dnd';
+import { BrowserRouter } from 'react-router-dom';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import './index.css';
 import App from './components/Main/main';
@@ -10,7 +13,11 @@ import mainStore from './services/mainStore';
 render(
   <React.StrictMode>
       <Provider store={mainStore}>
-        <App />
+        <DndProvider backend={HTML5Backend}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </DndProvider>
       </Provider>
     </React.StrictMode>, 
   document.getElementById('root'));

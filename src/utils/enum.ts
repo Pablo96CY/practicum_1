@@ -10,5 +10,6 @@ export const KeyBoard = {
 
 export const Methods = {
   POST: 'POST',
-  GET: 'GET'
+  GET: 'GET',
+  PATCH: 'PATCH'
 }

@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 import style from "./style.module.css";
 import image from "../../images/success.png";
 import localize from "../../utils/localize";
+import { LOGIN_ROOT } from "../../utils/routes";
 
-interface IProps {
-  data: number;
-}
+const OrderDetails = ({ data }) => {
+  const navigate = useNavigate();
 
-const OrderDetails = ({ data }: IProps) => {
+  const { user } = useSelector(store => store.userReducer);
+  
+  useEffect(() => {
+    if(!user || user.name === '') {
+      navigate(LOGIN_ROOT, { replace: true });
+    }
+  }, [user, navigate]);
+
   return (
     <div className={style.modal_content}>
       <p className={`text text_type_digits-large ${style.identificator_order}`}>
