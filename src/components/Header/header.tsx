@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { 
   Logo, 
   BurgerIcon, 
   ListIcon, 
-  ProfileIcon
+  ProfileIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import style from "./style.module.css";
@@ -17,19 +18,39 @@ const Header = () => {
         <div className={style.block_box}>
           <div className={style.block_item}>
             <BurgerIcon type="primary"/>
-            <a className={style.link} href={BASE_ROOT}>{localize.Constructor}</a>
+            <Link 
+              className={style.link} 
+              to={BASE_ROOT}
+            >
+              {localize.Constructor}
+            </Link>
           </div>
           <div className={style.block_item}>
             <ListIcon type="primary" />
-            <a className={style.link} href={COSTRUCTOR_ROOT}>{localize.OrderList}</a>
+            <Link 
+              className={style.link} 
+              to={COSTRUCTOR_ROOT}
+            >
+              {localize.OrderList}
+            </Link>
           </div>
         </div>
         <div className={`${style.block_item} ${style.block_box_logo}`}>
-          <Logo/>
+          <Link 
+            className={style.link} 
+            to={BASE_ROOT}
+          >
+            <Logo/>
+          </Link>
         </div>
         <div className={style.block_item}>
           <ProfileIcon type="primary" />
-          <a className={style.link} href={PROFILE_ROOT}>{localize.PersonalAccount}</a>
+          <Link 
+            className={style.link} 
+            to={PROFILE_ROOT}
+          >
+            {localize.PersonalAccount}
+          </Link>
         </div>
       </nav>
     </header>

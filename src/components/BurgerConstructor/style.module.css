@@ -1,5 +1,6 @@
 .section {
   flex: 0 0 610px;
+  margin: 0 20px;
 }
 
 .burger_constructor {
@@ -47,5 +48,15 @@
   background: #8585AD;
 }
 
+.no_item {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background: var(--background);
+  height: 50px;
+  margin-left: 8px;
+}
 
-
+.no_item_text {
+  flex: 1;
+}

@@ -1,5 +1,6 @@
 .ingredients_container {
   flex: 0 0 610px;
+  margin: 0 20px;
 }
 
 .ingredients_box {

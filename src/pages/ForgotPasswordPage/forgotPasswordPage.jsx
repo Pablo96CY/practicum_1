@@ -56,13 +56,14 @@ const ForgotPasswordPage = () => {
     dispatch
   ]);
 
-  const sendEmail = () => {
+  const sendEmail = (e) => {
+    e.preventDefault();
     dispatch(forgotPasswordAction(email));
   };
 
   return (
     <main className={commonStyle.pages_form_container}>
-      <form className={commonStyle.pages_container_inner}>
+      <form className={commonStyle.pages_container_inner} onSubmit={sendEmail}>
         <h1 className={`${commonStyle.pages_form_h1} text text_type_main-medium`}>
           {localize.ChangingPassword}
         </h1>
@@ -78,8 +79,7 @@ const ForgotPasswordPage = () => {
         <Button 
           type="primary" 
           extraClass={commonStyle.pages_form_button}
-          htmlType="button"
-          onClick={sendEmail}
+          htmlType="submit"
         >
           {localize.ChangePassword}
         </Button>

@@ -57,17 +57,18 @@ const ResetPasswordPage = () => {
     dispatch
   ]);
 
-  const sendCode = () => {
+  const sendCode = (e) => {
     const form = {
       password: password,
       token: code
     }
+    e.preventDefault();
     dispatch(resetPasswordAction(form));
   };
 
   return (
     <main className={commonStyle.pages_form_container}>
-      <div className={commonStyle.pages_container_inner}>
+      <form className={commonStyle.pages_container_inner} onSubmit={sendCode}>
         <h1 className={`${commonStyle.pages_form_h1} text text_type_main-medium`}>
           {localize.ResetPasswordTitle}
         </h1>
@@ -92,8 +93,7 @@ const ResetPasswordPage = () => {
         <Button 
           type="primary" 
           extraClass={commonStyle.pages_form_button}
-          htmlType="button"
-          onClick={sendCode}
+          htmlType="submit"
         >
           {localize.Save}
         </Button>
@@ -105,7 +105,7 @@ const ResetPasswordPage = () => {
             {localize.ToLogin}
           </Link>
         </p>
-      </div>
+      </form>
     </main>
   );
 }

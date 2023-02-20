@@ -71,9 +71,9 @@ const BurgerIngredients = () => {
 
   const counterBuns = useMemo(() => {
     const count = {};
-
-    count[bun._id] = 2;
-
+    if(bun) {
+      count[bun._id] = 2;
+    }
     return count;
   }, [bun]);
 

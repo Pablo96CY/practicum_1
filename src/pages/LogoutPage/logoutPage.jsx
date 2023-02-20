@@ -26,11 +26,11 @@ const LogoutPage = () => {
 
   return (
     <main className={commonStyle.pages_form_container}>
-      <form className={commonStyle.pages_container_inner}>
+      <div className={commonStyle.pages_container_inner}>
         <h1 className={`${commonStyle.pages_form_h1} text text_type_main-medium`}>
           {localize.Exit}
         </h1>
-      </form>
+      </div>
     </main>
   );
 }

@@ -1,22 +1,16 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router";
 
 import localize from "../../utils/localize";
 import style from "./style.module.css";
-import { ingredientsData } from "../../services/BurgerIngredients/actions";
 
 const IngredientDetails = () => {
-  const dispatch = useDispatch();
+  const params = useParams();
 
   const { data } = useSelector(store => store.burgerIngredients);
 
-  useEffect(() => { 
-    if(!data.length) {
-      dispatch(ingredientsData());
-    }
-  }, [dispatch, data]);
-
-  let item = data.find(d => d._id === window.location.pathname.split('/')[2]);
+  let item = data.find(d => params.id ? d._id === params.id : d._id === window.location.pathname.split('/')[2]);
 
   return (
     <>

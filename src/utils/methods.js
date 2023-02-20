@@ -1,17 +1,13 @@
+import { request } from "./apiFunctions";
 import { INGREDIENTS_DATA_API_URL } from "./const";
 import { Methods } from "./enum";
-import localize from "./localize";
 
-export const getIngredientsMainData = async() => {
-  const result = await fetch(`${INGREDIENTS_DATA_API_URL}/ingredients`);
-  if (!result.ok) {
-    const message = `${localize.Error} ${result.status}`;
-    throw new Error(message);
-  } else return result.json();
+export const getIngredientsMainData = () => {
+  return request(`${INGREDIENTS_DATA_API_URL}/ingredients`)
 };
 
-export const createNewOrders = async(ingredientsId) => {
-  const result = await fetch(`${INGREDIENTS_DATA_API_URL}/orders`, 
+export const createNewOrders = (ingredientsId) => {
+  return request(`${INGREDIENTS_DATA_API_URL}/orders`, 
     {
       method: Methods.POST,
       headers: {
@@ -20,14 +16,10 @@ export const createNewOrders = async(ingredientsId) => {
       body: JSON.stringify({ ingredients: ingredientsId })
     }
   );
-  if (!result.ok) {
-    const message = `${localize.Error} ${result.status}`;
-    throw new Error(message);
-  } else return result.json();
 };
 
-export const registerUser = async(user) => {
-  const result = await fetch(`${INGREDIENTS_DATA_API_URL}/auth/register`, 
+export const registerUser = (user) => {
+  return request(`${INGREDIENTS_DATA_API_URL}/auth/register`, 
     {
       method: Methods.POST,
       headers: {
@@ -36,14 +28,10 @@ export const registerUser = async(user) => {
       body: JSON.stringify({ ...user })
     }
   );
-  if (!result.ok) {
-    const message = `${localize.Error} ${result.status}`;
-    throw new Error(message);
-  } else return result.json();
 }
 
-export const loginUser = async(user) => {
-  const result = await fetch(`${INGREDIENTS_DATA_API_URL}/auth/login`, 
+export const loginUser = (user) => {
+  return request(`${INGREDIENTS_DATA_API_URL}/auth/login`, 
     {
       method: Methods.POST,
       headers: {
@@ -52,14 +40,10 @@ export const loginUser = async(user) => {
       body: JSON.stringify({ ...user })
     }
   );
-  if (!result.ok) {
-    const message = `${localize.Error} ${result.status}`;
-    throw new Error(message);
-  } else return result.json();
 }
 
-export const logoutUser = async() => {
-  const result = await fetch(`${INGREDIENTS_DATA_API_URL}/auth/logout`, 
+export const logoutUser = () => {
+  return request(`${INGREDIENTS_DATA_API_URL}/auth/logout`, 
     {
       method: "POST",
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
@@ -68,71 +52,54 @@ export const logoutUser = async() => {
       })
     }
   );
-  if (!result.ok) {
-    const message = `${localize.Error} ${result.status}`;
-    throw new Error(message);
-  } else return result.json();
 }
 
-export const forgotPassword = async(form) => {
-  const result = await fetch(`${INGREDIENTS_DATA_API_URL}/password-reset`, 
+export const forgotPassword = (form) => {
+  return request(`${INGREDIENTS_DATA_API_URL}/password-reset`, 
     {
       method: Methods.POST,
       body: JSON.stringify({ ...form })
     }
   );
-  if (!result.ok) {
-    const message = `${localize.Error} ${result.status}`;
-    throw new Error(message);
-  } else return result.json();
 }
 
 export const resetPassword = async(form) => {
-  const result = await fetch(`${INGREDIENTS_DATA_API_URL}/password-reset/reset`, 
+  return request(`${INGREDIENTS_DATA_API_URL}/password-reset/reset`, 
     {
       method: Methods.POST,
       body: JSON.stringify({ ...form })
     }
   );
-  if (!result.ok) {
-    const message = `${localize.Error} ${result.status}`;
-    throw new Error(message);
-  } else return result.json();
 }
 
-export const refreshToken = async() => {
-  const result = await fetch(`${INGREDIENTS_DATA_API_URL}/auth/token`,
+export const refreshToken = () => {
+  return request(`${INGREDIENTS_DATA_API_URL}/auth/token`,
   {
     method: Methods.POST,
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
-  },
+    },
     body: JSON.stringify({
       token: localStorage.getItem("refreshToken")
     })
   });
-  if (!result.ok) {
-    const message = `${localize.Error} ${result.status}`;
-    throw new Error(message);
-  } else return result.json();
 }
 
-export const getUser = async() => {
-  const result = await fetch(`${INGREDIENTS_DATA_API_URL}/auth/user`, 
+export const getUser = () => {
+  return request(`${INGREDIENTS_DATA_API_URL}/auth/user`, 
   {
     method: Methods.GET,
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8'
+    },
     headers: {
       Authorization: "Bearer " + localStorage.getItem("accessToken")
     }
   });
-  if (!result.ok) {
-    const message = `${localize.Error} ${result.status}`;
-    throw new Error(message);
-  } else return result.json();
 }
 
-export const updateUser = async(user) => {
-  const result = await fetch(`${INGREDIENTS_DATA_API_URL}/auth/user`,  
+export const updateUser = (user) => {
+  return request(`${INGREDIENTS_DATA_API_URL}/auth/user`,  
   {
     method: Methods.PATCH,
     headers: {
@@ -140,8 +107,4 @@ export const updateUser = async(user) => {
     },
     body: JSON.stringify({ ...user })
   });
-  if (!result.ok) {
-    const message = `${localize.Error} ${result.status}`;
-    throw new Error(message);
-  } else return result.json();
 }

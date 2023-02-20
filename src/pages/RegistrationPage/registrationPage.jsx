@@ -63,12 +63,13 @@ const RegistrationPage = () => {
     dispatch
   ]);
 
-  const applyForm = () => {
+  const applyForm = (e) => {
     const form = {
       name: name,
       email: email,
       password: password
     }
+    e.preventDefault();
     dispatch(
       registrationAction(form)
     );
@@ -76,7 +77,7 @@ const RegistrationPage = () => {
 
   return (
     <main className={commonStyle.pages_form_container}>
-      <div className={commonStyle.pages_container_inner}>
+      <form className={commonStyle.pages_container_inner} onSubmit={applyForm}>
         <h1 className={`${commonStyle.pages_form_h1} text text_type_main-medium`}>
           {localize.Registration}
         </h1>
@@ -108,8 +109,7 @@ const RegistrationPage = () => {
         <Button 
           type="primary" 
           extraClass={commonStyle.pages_form_button}
-          htmlType="button"
-          onClick={applyForm}
+          htmlType="submit"
         >
           {localize.MakeRegistration}
         </Button>
@@ -121,7 +121,7 @@ const RegistrationPage = () => {
             {localize.ToLogin}
           </Link>
         </p>
-      </div>
+      </form>
     </main>
   );
 }

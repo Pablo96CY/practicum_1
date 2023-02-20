@@ -4,14 +4,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { EmailInput, PasswordInput, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import { 
+  BASE_ROOT,
   FORGOT_PASSWORD_ROOT, 
-  PROFILE_ROOT, 
   REGISTRATON_FORM_ROOT 
 } from '../../utils/routes';
 import commonStyle from "../../utils/commonPageStyles.module.css";
 import localize from '../../utils/localize';
 import { CLEAR_USER_DATA, getUserDataAction } from '../../services/UserData/actions';
-import { CLEAR_AUTH, loginAction } from '../../services/Authorization/actions';
+import { CLEAR_AUTH, CLEAR_TOKEN, loginAction } from '../../services/Authorization/actions';
 import { CLEAR_RESET_PASSWORD } from '../../services/PasswordOperations/actions';
 
 const LoginFormPage = () => {
@@ -47,7 +47,10 @@ const LoginFormPage = () => {
       dispatch({
         type: CLEAR_AUTH
       })
-      navigate(PROFILE_ROOT, { replace: true });
+      dispatch({
+        type: CLEAR_TOKEN
+      })
+      navigate(BASE_ROOT, { replace: true });
     }
   }, [
     user?.name, 
@@ -56,17 +59,18 @@ const LoginFormPage = () => {
     dispatch
   ]);
 
-  const applyForm = () => {
+  const applyForm = (e) => {
     const form = {
       email: email,
       password: password
     }
+    e.preventDefault();
     dispatch(loginAction(form));
   };
 
   return (
     <main className={commonStyle.pages_form_container}>
-      <form className={commonStyle.pages_container_inner}>
+      <form className={commonStyle.pages_container_inner} onSubmit={applyForm}>
         <h1 className={`${commonStyle.pages_form_h1} text text_type_main-medium`}>
           {localize.Entrance}
         </h1>
@@ -89,8 +93,7 @@ const LoginFormPage = () => {
         <Button 
           type="primary" 
           extraClass={commonStyle.pages_form_button}
-          htmlType="button"
-          onClick={applyForm}
+          htmlType="submit"
         >
           {localize.ToLogin}
         </Button>

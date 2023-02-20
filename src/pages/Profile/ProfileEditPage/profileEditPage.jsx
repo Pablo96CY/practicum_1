@@ -37,12 +37,13 @@ const ProfileEditPage = () => {
     setEmail(user.email);
   };
 
-  const submitForm = () => {
+  const submitForm = (e) => {
     const form = {
       name: name,
       email: email,
       password: password
     }
+    e.preventDefault();
     dispatch(
       patchUserDataAction(form)
     );
@@ -50,7 +51,7 @@ const ProfileEditPage = () => {
   };
 
   return (
-    <form className={commonStyle.pages_container_inner}>
+    <form className={commonStyle.pages_container_inner} onSubmit={submitForm}>
       <Input 
         extraClass={commonStyle.pages_form_p_email_password}
         placeholder={localize.Name}
@@ -82,7 +83,7 @@ const ProfileEditPage = () => {
       <Button 
         type="primary" 
         extraClass={`${commonStyle.pages_form_button} ${commonStyle.pages_form_button_save}`}
-        htmlType="button"
+        htmlType="submit"
         onClick={submitForm}
       >
         {localize.Save}
