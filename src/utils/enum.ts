@@ -5,7 +5,8 @@ export const Ingredients = {
 }
 
 export const KeyBoard = {
-  escape: 'esc',
+  ESCAPE: 'Escape',
+  KEYDOWN: 'keydown'
 }
 
 export const Methods = {

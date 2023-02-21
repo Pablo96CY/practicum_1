@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode, useCallback, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
@@ -16,16 +16,19 @@ const modal = document.getElementById('modal')!;
 
 const Modal = ({ onClose, info, children }: IProps) => {
 
+  const escapeClose = useCallback((event: KeyboardEvent) => {
+    if (event.key === KeyBoard.ESCAPE) {
+      onClose();
+    }
+  }, [onClose]);
+
   useEffect(() => {
-    const escapeClose = (e: KeyboardEvent) => (
-      e.key === KeyBoard.escape ? onClose() : undefined
-    );
-    document.body.addEventListener("keydown", escapeClose);
+    document.body.addEventListener(KeyBoard.KEYDOWN as any, escapeClose);
 
     return () => {
-      document.body.removeEventListener("keydown", escapeClose);
+      document.body.removeEventListener(KeyBoard.KEYDOWN as any, escapeClose);
     };
-  }, [onClose]);
+  }, [escapeClose]);
 
   return ReactDOM.createPortal(
     <>
