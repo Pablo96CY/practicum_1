@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { EmailInput, PasswordInput, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import { 
@@ -17,6 +17,9 @@ import { CLEAR_RESET_PASSWORD } from '../../services/PasswordOperations/actions'
 const LoginFormPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from || BASE_ROOT;
 
   const { user } = useSelector(store => store.userReducer);
 
@@ -50,7 +53,7 @@ const LoginFormPage = () => {
       dispatch({
         type: CLEAR_TOKEN
       })
-      navigate(BASE_ROOT, { replace: true });
+      navigate(from, { replace: true });
     }
   }, [
     user?.name, 

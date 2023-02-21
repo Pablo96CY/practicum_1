@@ -48,6 +48,9 @@ const Header = () => {
           <Link 
             className={style.link} 
             to={PROFILE_ROOT}
+            state={{
+              from: PROFILE_ROOT
+            }}
           >
             {localize.PersonalAccount}
           </Link>

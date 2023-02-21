@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import propTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-import { LOGIN_ROOT } from '../../utils/routes';
+import { BASE_ROOT, LOGIN_ROOT } from '../../utils/routes';
 import { getUserDataAction } from '../../services/UserData/actions';
 import { CLEAR_AUTH, CLEAR_TOKEN, loginAction, tokenAction } from '../../services/Authorization/actions';
 import localize from '../../utils/localize';
@@ -11,8 +11,13 @@ import localize from '../../utils/localize';
 const ProtectedRoutes = ({element}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
 
-  const { errorUserData } = useSelector(store => store.userReducer);
+  const from = location.state?.from || BASE_ROOT;
+
+  const { errorUserData, user } = useSelector(store => store.userReducer);
+
+  const { isLogged } = useSelector(store => store.authReducer);
 
   const { 
     errorAuthorization, 
@@ -30,7 +35,7 @@ const ProtectedRoutes = ({element}) => {
       if (errorUserData === localize.JWTError) {
         dispatch(tokenAction());
       } else {
-        navigate(LOGIN_ROOT, { replace: true });
+        navigate(LOGIN_ROOT, { replace: true, state: { from } });
       }
     }
   }, [
@@ -44,7 +49,7 @@ const ProtectedRoutes = ({element}) => {
       dispatch({
         type: CLEAR_TOKEN
       });
-      navigate(LOGIN_ROOT, { replace: true });
+      navigate(LOGIN_ROOT, { replace: true, state: { from } });
     } 
     if(successToken) {
       dispatch({
@@ -70,7 +75,7 @@ const ProtectedRoutes = ({element}) => {
       dispatch({
         type: CLEAR_AUTH
       });
-      navigate(LOGIN_ROOT, { replace: true });
+      navigate(LOGIN_ROOT, { replace: true, state: { from } });
     }
   }, [
     dispatch, 
@@ -79,7 +84,7 @@ const ProtectedRoutes = ({element}) => {
     navigate, 
   ]);
 
-  return element;
+  return ((!!user?.name && user.name !== '') || isLogged) && element;
 }
 
 ProtectedRoutes.propTypes = {
