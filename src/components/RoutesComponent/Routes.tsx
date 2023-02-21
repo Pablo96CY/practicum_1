@@ -1,16 +1,16 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
-import ForgotPasswordPage from '../../pages/ForgotPasswordPage/ForgotPasswordPage';
+import ForgotPasswordPage from '../../pages/PasswordForgotPage/PasswordForgotPage';
 import IngredientPage from '../../pages/IngredientPage/IngredientPage';
 import LoginFormPage from '../../pages/LoginFormPage/LoginFormPage';
 import LogoutPage from '../../pages/LogoutPage/LogoutPage';
 import MainPage from '../../pages/MainPage/MainPage';
 import OthersPage from '../../pages/OthersPage/OthersPage';
-import ProfileEditPage from '../../pages/Profile/ProfileEditPage/ProfileEditPage';
-import ProfileMainPage from '../../pages/Profile/ProfileMainPage/ProfileMainPage';
-import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage';
-import ResetPasswordPage from '../../pages/ResetPasswordPage/ResetPasswordPage';
+import ProfileEditPage from '../../pages/ProfilePage/ProfileEditPage/ProfileEditPage';
+import ProfileMainPage from '../../pages/ProfilePage/ProfileMainPage/ProfileMainPage';
+import RegistrationPage from '../../pages/RegistratePage/RegistratePage';
+import ResetPasswordPage from '../../pages/PasswordResetPage/PasswordResetPage';
 import { 
   BASE_ROOT, 
   FORGOT_PASSWORD_ROOT, 
@@ -22,7 +22,7 @@ import {
   REGISTRATON_FORM_ROOT,
   RESET_PASSWORD_ROOT,
 } from '../../utils/routes';
-import ProtectedRoutes from '../ProtectedRoutes/ProtectedRoutes';
+import ProtectedRoutes from '../ProtectedRoutesComponent/ProtectedRoutes';
 
 const RoutesComponent = () => {
   const location = useLocation();

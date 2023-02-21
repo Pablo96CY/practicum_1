@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import style from "./style.module.css";
-import ModalOverlay from "../ModalOverlay/ModalOverlay";
+import ModalOverlay from "../ModalOverlayComponent/ModalOverlay";
 import { KeyBoard } from "../../utils/enum";
 
 interface IProps {

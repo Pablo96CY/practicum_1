@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import style from "./style.module.css";
-import Card from "../BurgerCard/BurgerCard";
+import Card from "../BurgerCardComponent/BurgerCard";
 import localize from "../../utils/localize";
 import { Ingredients } from "../../utils/enum";
 
