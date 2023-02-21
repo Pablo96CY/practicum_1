@@ -6,7 +6,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { createRoot } from 'react-dom/client';
 
 import './index.css';
-import App from './components/Main/main';
+import App from './components/Main/Main';
 import * as serviceWorker from './serviceWorker';
 import mainStore from './services/mainStore';
 

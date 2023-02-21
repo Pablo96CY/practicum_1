@@ -7,11 +7,11 @@ import { CurrencyIcon, Button, ConstructorElement } from "@ya.praktikum/react-de
 
 import style from "./style.module.css";
 import localize from "../../utils/localize";
-import Modal from "../Modal/modal";
-import OrderDetails from "../OrderDetails/orderDetails";
+import Modal from "../Modal/Modal";
+import OrderDetails from "../OrderDetails/OrderDetails";
 import { BunImage, Ingredients } from "../../utils/enum";
 import { ADD_ITEM, CLEAR_ITEMS, DELETE_ITEM } from "../../services/BurgerConstructor/actions";
-import BurgerConstructorMainIngredient from "../BurgerConstructorItem/burgerConstructorItem";
+import BurgerConstructorMainIngredient from "../BurgerConstructorItem/BurgerConstructorItem";
 import { createNewOrder, ORDER_CLOSE_MODAL, ORDER_OPEN_MODAL } from "../../services/OrderDetails/actions";
 import { LOGIN_ROOT } from "../../utils/routes";
 import { getUserDataAction } from "../../services/UserData/actions";

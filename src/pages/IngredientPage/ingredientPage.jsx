@@ -1,6 +1,6 @@
 import React from 'react';
 
-import IngredientDetails from '../../components/IngredientDetails/ingredientDetails';
+import IngredientDetails from '../../components/IngredientDetails/IngredientDetails';
 import commonStyle from "../../utils/commonPageStyles.module.css";
 
 const IngredientPage = () => {

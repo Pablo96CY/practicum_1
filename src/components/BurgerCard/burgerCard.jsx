@@ -5,8 +5,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import style from "./style.module.css";
-import Modal from "../Modal/modal";
-import IngredientDetails from "../IngredientDetails/ingredientDetails";
+import Modal from "../Modal/Modal";
+import IngredientDetails from "../IngredientDetails/IngredientDetails";
 import { mainDataPropTypes } from "../../utils/propTypes";
 import localize from "../../utils/localize";
 import { BASE_ROOT, INGREDIENTS_ROOT } from "../../utils/routes";

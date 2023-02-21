@@ -4,8 +4,8 @@ import { useLocation } from 'react-router';
 
 import { ingredientsData } from '../../services/BurgerIngredients/actions';
 import { INGREDIENT_INFO_MODAL_CLOSE, INGREDIENT_INFO_MODAL_OPEN } from '../../services/IngredientsDetails/actions';
-import Header from '../Header/header';
-import RoutesComponent from '../Routes/routes';
+import Header from '../Header/Header';
+import RoutesComponent from '../Routes/Routes';
 
 const App = () => {
   const dispatch = useDispatch();
