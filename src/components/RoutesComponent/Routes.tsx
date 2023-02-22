@@ -2,11 +2,11 @@ import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 import ForgotPasswordPage from '../../pages/PasswordForgotPage/PasswordForgotPage';
-import IngredientPage from '../../pages/IngredientPage/IngredientPage';
-import LoginFormPage from '../../pages/LoginFormPage/LoginFormPage';
-import LogoutPage from '../../pages/LogoutPage/LogoutPage';
+import IngredientPage from '../../pages/IngredientsPage/IngredientsPage';
+import LoginFormPage from '../../pages/LoginPage/LoginPage';
+import LogoutPage from '../../pages/LogoutRedirectPage/LogoutRedirectPage';
 import MainPage from '../../pages/MainPage/MainPage';
-import OthersPage from '../../pages/OthersPage/OthersPage';
+import OthersPage from '../../pages/NotFoundPage/NotFoundPage';
 import ProfileEditPage from '../../pages/ProfilePage/ProfileEditPage/ProfileEditPage';
 import ProfileMainPage from '../../pages/ProfilePage/ProfileMainPage/ProfileMainPage';
 import RegistrationPage from '../../pages/RegistratePage/RegistratePage';
