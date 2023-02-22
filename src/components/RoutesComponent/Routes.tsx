@@ -5,7 +5,7 @@ import ForgotPasswordPage from '../../pages/PasswordForgotPage/PasswordForgotPag
 import IngredientPage from '../../pages/IngredientsPage/IngredientsPage';
 import LoginFormPage from '../../pages/LoginPage/LoginPage';
 import LogoutPage from '../../pages/LogoutRedirectPage/LogoutRedirectPage';
-import MainPage from '../../pages/MainPage/MainPage';
+import MainPage from '../../pages/BasePage/BasePage';
 import OthersPage from '../../pages/NotFoundPage/NotFoundPage';
 import ProfileEditPage from '../../pages/ProfilePage/ProfileEditPage/ProfileEditPage';
 import ProfileMainPage from '../../pages/ProfilePage/ProfileMainPage/ProfileMainPage';
