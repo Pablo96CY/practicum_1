@@ -1,0 +1,6 @@
+.overlay {
+  background-color: rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  inset: 0;
+}

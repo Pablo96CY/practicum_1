@@ -1,0 +1,61 @@
+.pages_form_container {
+  padding-top: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pages_container_inner {
+  text-align: center;
+}
+
+.pages_link {
+  color: #4C4CFF;
+  text-decoration: none;
+}
+
+.pages_form_p_email_password {
+  margin-bottom: 16px;
+}
+
+.pages_form_h1 {
+  margin-bottom: 24px;
+}
+
+.pages_form_button {
+  margin-bottom: 100px;
+}
+
+.pages_form_button_save {
+  margin-right: 165px;
+}
+
+.pages_form_container_profile {
+  justify-content: flex-start;
+}
+
+.pages_form_container_profile_inner {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.pages_form_container_profile_tabs {
+  width: 320px;
+  margin-left: 20px;
+  margin-right: 60px;
+}
+
+.pages_form_container_profile_tabs_ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pages_form_container_profile_tabs a {
+  text-decoration: none;
+  line-height: 64px;
+}
+
+.pages_form_container_profile_tabs_text {
+  color: #404052;
+  margin-top: 80px;
+}

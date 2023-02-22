@@ -1,9 +1,14 @@
 import { Ingredients } from "../../utils/enum";
-import { ADD_ITEM, DELETE_ITEM, REPLACE_ITEM } from "./actions";
+import { 
+  ADD_ITEM, 
+  DELETE_ITEM, 
+  REPLACE_ITEM,
+  CLEAR_ITEMS 
+} from "./actions";
 
 const constructorState = {
   items: [],
-  bun: {},
+  bun: null,
 };
 
 export const constructorReducer = (state = constructorState, action) => {
@@ -44,6 +49,13 @@ export const constructorReducer = (state = constructorState, action) => {
         items: [...state.items].filter(
           (item, index) => index !== action.index
         ),
+      };
+    }
+    case CLEAR_ITEMS: {
+      return {
+        ...state,
+        items: [],
+        bun: null
       };
     }
     default:

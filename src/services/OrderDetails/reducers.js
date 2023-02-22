@@ -26,7 +26,7 @@ export const newOrderReducer = (state = newOrderState, action) => {
         ...state,
         isLoad: false,
         isError: false,
-        new: action.order,
+        newOrderNumber: action.newOrderNumber,
       };
     }
     case ORDER_ERROR: {
@@ -41,7 +41,6 @@ export const newOrderReducer = (state = newOrderState, action) => {
       return {
         ...state,
         isOpen: true,
-        newOrderNumber: 645328
       };
     }
     case ORDER_CLOSE_MODAL: {
