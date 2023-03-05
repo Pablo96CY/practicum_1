@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 
@@ -6,11 +6,17 @@ import style from "./style.module.css";
 import image from "../../images/success.png";
 import localize from "../../utils/localize";
 import { LOGIN_ROOT } from "../../utils/routes";
+import { IUser } from "../../utils/interfaces";
+import { TRootState } from "../../utils/types";
 
-const OrderDetails = ({ data }) => {
+interface IProps {
+  data: number
+}
+
+const OrderDetails: FC<IProps> = ({ data }) => {
   const navigate = useNavigate();
 
-  const { user } = useSelector(store => store.userReducer);
+  const { user }: IUser = useSelector((store: TRootState) => store.userReducer);
   
   useEffect(() => {
     if(!user || user.name === '') {

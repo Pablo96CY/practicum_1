@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { EmailInput, Button } from "@ya.praktikum/react-developer-burger-ui-components";
@@ -9,6 +9,8 @@ import { LOGIN_ROOT, PROFILE_ROOT, RESET_PASSWORD_ROOT } from '../../utils/route
 import { CLEAR_RESET_PASSWORD, forgotPasswordAction } from '../../services/PasswordOperations/actions';
 import { CLEAR_USER_DATA, getUserDataAction } from '../../services/UserData/actions';
 import { CLEAR_AUTH } from '../../services/Authorization/actions';
+import { TRootState } from '../../utils/types';
+import { IUser } from '../../utils/interfaces';
 
 const ForgotPasswordPage = () => {
   const dispatch = useDispatch();
@@ -16,12 +18,12 @@ const ForgotPasswordPage = () => {
 
   const [ email, setEmail ] = useState('');
 
-  const { user } = useSelector(store => store.userReducer);
+  const { user }: IUser = useSelector((store: TRootState) => store.userReducer);
 
-  const { successPassword, errorPassword } = useSelector(store => store.passwordReducer);
+  const { successPassword, errorPassword } = useSelector((store: TRootState) => store.passwordReducer);
 
   useEffect(() => {
-    dispatch(getUserDataAction());
+    dispatch<any>(getUserDataAction());
   }, [dispatch]);
 
   useEffect(() => {
@@ -56,9 +58,9 @@ const ForgotPasswordPage = () => {
     dispatch
   ]);
 
-  const sendEmail = (e) => {
+  const sendEmail = (e: FormEvent) => {
     e.preventDefault();
-    dispatch(forgotPasswordAction(email));
+    dispatch<any>(forgotPasswordAction(email));
   };
 
   return (

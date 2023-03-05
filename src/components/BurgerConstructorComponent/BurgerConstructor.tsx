@@ -15,19 +15,21 @@ import BurgerConstructorMainIngredient from "../BurgerConstructorItemComponent/B
 import { createNewOrder, ORDER_CLOSE_MODAL, ORDER_OPEN_MODAL } from "../../services/OrderDetails/actions";
 import { LOGIN_ROOT } from "../../utils/routes";
 import { getUserDataAction } from "../../services/UserData/actions";
+import { TRootState } from "../../utils/types";
+import { IngredientsProps, IUser } from "../../utils/interfaces";
 
 const BurgerConstructor = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { items, bun } = useSelector(store => store.burgerConstructor);
+  const { items, bun }: IngredientsProps = useSelector((store: TRootState) => store.burgerConstructor);
 
-  const { newOrderNumber, isOpen } = useSelector(store => store.orderDetails);
+  const { newOrderNumber, isOpen } = useSelector((store: TRootState) => store.orderDetails);
 
-  const { user } = useSelector(store => store.userReducer);
+  const { user }: IUser = useSelector((store: TRootState) => store.userReducer);
 
   useEffect(() => {
-    dispatch(getUserDataAction());
+    dispatch<any>(getUserDataAction());
   }, [dispatch]);
 
   useEffect(() => {
@@ -71,7 +73,7 @@ const BurgerConstructor = () => {
     }
   });
 
-  const deleteItem = (index) => {
+  const deleteItem = (index: number) => {
     dispatch({ 
       type: DELETE_ITEM, 
       index: index 
@@ -91,7 +93,7 @@ const BurgerConstructor = () => {
 
   const onOpen = () => {
     if(!!user?.name && user.name !== '') {
-      dispatch(createNewOrder([...items, bun, bun]));
+      dispatch<any>(createNewOrder([...items, bun, bun]));
     } else {
       navigate(LOGIN_ROOT, { replace: true });
     }
@@ -118,7 +120,7 @@ const BurgerConstructor = () => {
             key={`${bun && bun._id}_top`}
             text={bun ? `${bun.name} (верх)` : `${localize.AddBun}`}
             price={bun && bun.price}
-            thumbnail={bun ? bun.image : BunImage.BUN_1}
+            thumbnail={bun ? bun.image! : BunImage.BUN_1}
             extraClass={style.bun}
           />
         </div>
@@ -145,7 +147,7 @@ const BurgerConstructor = () => {
             key={`${bun && bun._id}_top`}
             text={bun ? `${bun.name} (низ)` : `${localize.AddBun}`}
             price={bun && bun.price}
-            thumbnail={bun ? bun.image : BunImage.BUN_2}
+            thumbnail={bun ? bun.image! : BunImage.BUN_2}
             extraClass={style.bun}
           />
         </div>

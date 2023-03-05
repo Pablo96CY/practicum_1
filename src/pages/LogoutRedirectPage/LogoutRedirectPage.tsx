@@ -6,15 +6,16 @@ import { LOGIN_ROOT } from '../../utils/routes';
 import commonStyle from "../../utils/commonPageStyles.module.css";
 import localize from '../../utils/localize';
 import { logoutAction } from '../../services/Authorization/actions';
+import { TRootState } from '../../utils/types';
 
 const LogoutPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isLogged } = useSelector(store => store.authReducer);
+  const { isLogged } = useSelector((store: TRootState) => store.authReducer);
 
   useEffect(() => {
-    dispatch(logoutAction());
+    dispatch<any>(logoutAction());
   }, [dispatch]);
 
   useEffect(() => {

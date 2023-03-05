@@ -68,7 +68,7 @@ const RoutesComponent = () => {
         } 
       />
       <Route 
-        path={PROFILE_ROOT} 
+        path={PROFILE_ROOT}
         element={
           <ProtectedRoutes 
             element={

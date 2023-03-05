@@ -12,7 +12,7 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-    dispatch(ingredientsData());
+    dispatch<any>(ingredientsData());
   }, [dispatch]);
 
   useEffect(() => {

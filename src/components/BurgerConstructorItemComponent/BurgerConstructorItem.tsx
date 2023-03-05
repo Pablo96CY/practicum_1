@@ -1,12 +1,19 @@
-import React, { useRef } from 'react';
+import React, { FC, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useDrag, useDrop } from 'react-dnd';
 import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import { REPLACE_ITEM } from '../../services/BurgerConstructor/actions';
 import style from "./style.module.css";
+import { Ingredient } from '../../utils/interfaces';
 
-const BurgerConstructorMainIngredient = ({ item, index, onDelete }) => {
+interface IProps {
+  item: Ingredient,
+  index: number,
+  onDelete: (i: number) => void
+}
+
+const BurgerConstructorMainIngredient: FC<IProps> = ({item, index, onDelete }) => {
   const ref = useRef(null);
   
   const dispatch = useDispatch();
@@ -18,7 +25,7 @@ const BurgerConstructorMainIngredient = ({ item, index, onDelete }) => {
 
   const [, Drop] = useDrop({
     accept: "replace",
-    drop(item) {
+    drop(item: any) {
       if (index !== item.index) {
         dispatch({ 
           type: REPLACE_ITEM, 
@@ -41,7 +48,7 @@ const BurgerConstructorMainIngredient = ({ item, index, onDelete }) => {
       <ConstructorElement
         text={item.name}
         price={item.price}
-        thumbnail={item.image}
+        thumbnail={item.image || ''}
         extraClass={style.ingredient_item}
         handleClose={() => {
           onDelete(index);

@@ -1,12 +1,13 @@
 import { request } from "./apiFunctions";
 import { INGREDIENTS_DATA_API_URL } from "./const";
 import { Methods } from "./enum";
+import { TEmail, TEmailAndPassword, TResetPassword, TUserFullForm } from "./types";
 
 export const getIngredientsMainData = () => {
   return request(`${INGREDIENTS_DATA_API_URL}/ingredients`)
 };
 
-export const createNewOrders = (ingredientsId) => {
+export const createNewOrders = (ingredientsId: string) => {
   return request(`${INGREDIENTS_DATA_API_URL}/orders`, 
     {
       method: Methods.POST,
@@ -18,7 +19,7 @@ export const createNewOrders = (ingredientsId) => {
   );
 };
 
-export const registerUser = (user) => {
+export const registerUser = (user: TUserFullForm) => {
   return request(`${INGREDIENTS_DATA_API_URL}/auth/register`, 
     {
       method: Methods.POST,
@@ -30,7 +31,7 @@ export const registerUser = (user) => {
   );
 }
 
-export const loginUser = (user) => {
+export const loginUser = (user: TEmailAndPassword) => {
   return request(`${INGREDIENTS_DATA_API_URL}/auth/login`, 
     {
       method: Methods.POST,
@@ -54,7 +55,7 @@ export const logoutUser = () => {
   );
 }
 
-export const forgotPassword = (form) => {
+export const forgotPassword = (form: TEmail) => {
   return request(`${INGREDIENTS_DATA_API_URL}/password-reset`, 
     {
       method: Methods.POST,
@@ -63,7 +64,7 @@ export const forgotPassword = (form) => {
   );
 }
 
-export const resetPassword = async(form) => {
+export const resetPassword = async(form: TResetPassword) => {
   return request(`${INGREDIENTS_DATA_API_URL}/password-reset/reset`, 
     {
       method: Methods.POST,
@@ -90,15 +91,13 @@ export const getUser = () => {
   {
     method: Methods.GET,
     headers: {
-      'Content-Type': 'application/json;charset=utf-8'
-    },
-    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
       Authorization: "Bearer " + localStorage.getItem("accessToken")
     }
   });
 }
 
-export const updateUser = (user) => {
+export const updateUser = (user: TUserFullForm) => {
   return request(`${INGREDIENTS_DATA_API_URL}/auth/user`,  
   {
     method: Methods.PATCH,
