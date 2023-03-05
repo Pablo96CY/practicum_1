@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import propTypes from 'prop-types';
+import React, { FC, ReactElement, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -7,33 +6,41 @@ import { BASE_ROOT, LOGIN_ROOT } from '../../utils/routes';
 import { getUserDataAction } from '../../services/UserData/actions';
 import { CLEAR_AUTH, CLEAR_TOKEN, loginAction, tokenAction } from '../../services/Authorization/actions';
 import localize from '../../utils/localize';
+import { TRootState } from '../../utils/types';
+import { IUser } from '../../utils/interfaces';
 
-const ProtectedRoutes = ({element}) => {
+interface IProps {
+  element: ReactElement
+}
+
+const ProtectedRoutes: FC<IProps> = ({element}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
 
   const from = location.state?.from || BASE_ROOT;
 
-  const { errorUserData, user } = useSelector(store => store.userReducer);
+  const { user }: IUser = useSelector((store: TRootState) => store.userReducer);
 
-  const { isLogged } = useSelector(store => store.authReducer);
+  const { errorUserData } = useSelector((store: TRootState) => store.userReducer);
+
+  const { isLogged } = useSelector((store: TRootState) => store.authReducer);
 
   const { 
     errorAuthorization, 
     successAuthorization,
     errorToken, 
     successToken 
-  } = useSelector(store => store.authReducer);
+  } = useSelector((store: TRootState) => store.authReducer);
 
   useEffect(() => {
-    dispatch(getUserDataAction());
+    dispatch<any>(getUserDataAction());
   }, [dispatch]);
 
   useEffect(() => {
     if(errorUserData) {
       if (errorUserData === localize.JWTError) {
-        dispatch(tokenAction());
+        dispatch<any>(tokenAction());
       } else {
         navigate(LOGIN_ROOT, { replace: true, state: { from } });
       }
@@ -55,7 +62,7 @@ const ProtectedRoutes = ({element}) => {
       dispatch({
         type: CLEAR_TOKEN
       });
-      dispatch(loginAction());
+      dispatch<any>(loginAction());
     }
   }, [
     dispatch, 
@@ -69,7 +76,7 @@ const ProtectedRoutes = ({element}) => {
       dispatch({
         type: CLEAR_AUTH
       });
-      dispatch(getUserDataAction());
+      dispatch<any>(getUserDataAction());
     } 
     if(errorAuthorization) {
       dispatch({
@@ -84,11 +91,7 @@ const ProtectedRoutes = ({element}) => {
     navigate, 
   ]);
 
-  return ((!!user?.name && user.name !== '') || isLogged) && element;
-}
-
-ProtectedRoutes.propTypes = {
-  element: propTypes.element.isRequired
+  return ((!!user?.name && user.name !== '') || isLogged) ? element : <div>{localize.Loading}</div>;
 }
 
 export default ProtectedRoutes;

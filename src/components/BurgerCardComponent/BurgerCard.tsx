@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { useDrag } from "react-dnd";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -7,17 +7,23 @@ import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-c
 import style from "./style.module.css";
 import Modal from "../ModalComponent/Modal";
 import IngredientDetails from "../IngredientDetailsComponent/IngredientDetails";
-import { mainDataPropTypes } from "../../utils/propTypes";
 import localize from "../../utils/localize";
 import { BASE_ROOT, INGREDIENTS_ROOT } from "../../utils/routes";
 import { INGREDIENT_INFO_MODAL_CLOSE, INGREDIENT_INFO_MODAL_OPEN } from "../../services/IngredientsDetails/actions";
+import { Ingredient } from "../../utils/interfaces";
+import { TRootState } from "../../utils/types";
 
-const Card = ({data, numberOfItems}) => {
+interface IProps {
+  data: Ingredient, 
+  numberOfItems: number
+}
+
+const Card: FC<IProps> = ({data, numberOfItems}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { isOpen } = useSelector(store => store.ingredientsDetails);
+  const { isOpen } = useSelector((store: TRootState) => store.ingredientsDetails);
 
   const [, dragRef] = useDrag({
     type: data.type,
@@ -73,9 +79,5 @@ const Card = ({data, numberOfItems}) => {
     </>
   )
 }
-
-Card.propTypes = {
-  data: mainDataPropTypes.isRequired,
-};
 
 export default Card

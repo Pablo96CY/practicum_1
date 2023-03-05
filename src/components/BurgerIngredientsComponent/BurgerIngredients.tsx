@@ -6,46 +6,48 @@ import style from "./style.module.css";
 import Card from "../BurgerCardComponent/BurgerCard";
 import localize from "../../utils/localize";
 import { Ingredients } from "../../utils/enum";
+import { TRootState } from "../../utils/types";
+import { Ingredient, IngredientsProps } from "../../utils/interfaces";
 
 const BurgerIngredients = () => {
-  const data = useSelector(store => store.burgerIngredients);
+  const data = useSelector((store: TRootState) => store.burgerIngredients);
 
-  const { items, bun } = useSelector(store => store.burgerConstructor);
+  const { items, bun }: IngredientsProps  = useSelector((store: TRootState) => store.burgerConstructor);
 
   const [activeTab, setActiveTab] = useState(Ingredients.bun);
 
-  const bunTab = useRef(null);
+  const bunTab = useRef<HTMLDivElement>(null);
 
-  const sauceTab = useRef(null);
+  const sauceTab = useRef<HTMLDivElement>(null);
 
-  const mainTab = useRef(null);
+  const mainTab = useRef<HTMLDivElement>(null);
 
-  const allBuns = useMemo(() => {
-    return data.data.filter(item => item.type === Ingredients.bun);
+  const allBuns: Ingredient[] = useMemo(() => {
+    return data.data.filter((item: Ingredient) => item.type === Ingredients.bun);
   }, [data]);
 
-  const sauces = useMemo(() => {
-    return data.data.filter(item => item.type === Ingredients.sauce);
+  const sauces: Ingredient[] = useMemo(() => {
+    return data.data.filter((item: Ingredient) => item.type === Ingredients.sauce);
   }, [data]);
   
-  const mains = useMemo(() => {
-    return data.data.filter(item => item.type === Ingredients.main);
+  const mains: Ingredient[] = useMemo(() => {
+    return data.data.filter((item: Ingredient) => item.type === Ingredients.main);
   }, [data]);  
 
   const scrollOnBunTabClick = () => {
-    bunTab.current.scrollIntoView({ behavior: "smooth" });
+    bunTab.current?.scrollIntoView({ behavior: "smooth" });
   }
 
   const scrollOnSauceTabClick = () => {
-    sauceTab.current.scrollIntoView({ behavior: "smooth" });
+    sauceTab.current?.scrollIntoView({ behavior: "smooth" });
   }
 
   const scrollOnMainTabClick = () => {
-    mainTab.current.scrollIntoView({ behavior: "smooth" });
+    mainTab.current?.scrollIntoView({ behavior: "smooth" });
   }
 
-  const onScroll = (event) => {
-    if (event.target.scrollTop <= 270) {
+  const onScroll = (event: any) => {
+    if (event.target?.scrollTop <= 270) {
       setActiveTab(Ingredients.bun);
     }
     if (event.target.scrollTop > 270 && event.target.scrollTop <= 790) {
@@ -57,20 +59,19 @@ const BurgerIngredients = () => {
   }
 
   const counterIngredients = useMemo(() => {
-    const count = {};
-
-    items.map(item => {
-      if (!(item._id in count)) {
-        count[item._id] = 0;
-      }
-      count[item._id] = count[item._id] + 1;
-    })
+    const count: any = {};
+      items.map((item: Ingredient) => {
+        if (!(item._id in count)) {
+          count[item._id] = 0;
+        }
+        count[item._id] = count[item._id] + 1;
+      })
 
     return count;
   }, [items]);
 
   const counterBuns = useMemo(() => {
-    const count = {};
+    const count: any = {};
     if(bun) {
       count[bun._id] = 2;
     }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { EmailInput, PasswordInput, Button, Input } from "@ya.praktikum/react-developer-burger-ui-components";
@@ -7,12 +7,14 @@ import commonStyle from "../../../utils/commonPageStyles.module.css";
 import localize from '../../../utils/localize';
 import { LOGIN_ROOT } from '../../../utils/routes';
 import { patchUserDataAction } from '../../../services/UserData/actions';
+import { TRootState } from '../../../utils/types';
+import { IUser } from '../../../utils/interfaces';
 
 const ProfileEditPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { user } = useSelector(store => store.userReducer);
+  const { user }: IUser = useSelector((store: TRootState) => store.userReducer);
 
   const [ name, setName ] = useState('');
   const [ password, setPassword ] = useState('');
@@ -37,16 +39,14 @@ const ProfileEditPage = () => {
     setEmail(user.email);
   };
 
-  const submitForm = (e) => {
+  const submitForm = (e: FormEvent) => {
     const form = {
       name: name,
       email: email,
       password: password
     }
     e.preventDefault();
-    dispatch(
-      patchUserDataAction(form)
-    );
+    dispatch<any>(patchUserDataAction(form));
     alert(localize.SuccessDataSave);
   };
 
@@ -65,7 +65,7 @@ const ProfileEditPage = () => {
       <EmailInput 
         extraClass={commonStyle.pages_form_p_email_password}  
         name="email"
-        icon="EditIcon" 
+        isIcon
         value={email} 
         onChange={(el) => {
           setEmail(el.target.value)
