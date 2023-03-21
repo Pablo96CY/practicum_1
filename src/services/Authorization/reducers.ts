@@ -1,3 +1,4 @@
+import { TAuthorizationActions } from '../../utils/types';
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
@@ -12,31 +13,41 @@ import {
   CLEAR_AUTH
 } from './actions';
 
-const initialState = {
+type TAuthorizationState = {
+  requestAuthorization: boolean;
+  errorAuthorization?: string;
+  successAuthorization: boolean;
+  requestToken: boolean;
+  successToken: boolean;
+  errorToken?: string;
+  isLogged: boolean;
+}
+
+const initialState: TAuthorizationState = {
   requestAuthorization: false,
   successAuthorization: false,
-  errorAuthorization: null,
+  errorAuthorization: undefined,
   requestToken: false,
   successToken: false,
-  errorToken: null,
+  errorToken: undefined,
   isLogged: false,
 };
 
-export const authorizationReducer = (state = initialState, action) => {
+export const authorizationReducer = (state = initialState, action: TAuthorizationActions): TAuthorizationState => {
   switch (action.type) {
     case LOGIN_REQUEST:
       return { 
         ...state, 
         requestAuthorization: true, 
         successAuthorization: false, 
-        errorAuthorization: null 
+        errorAuthorization: undefined 
       };
     case LOGIN_SUCCESS:
       return { 
         ...state, 
         requestAuthorization: false, 
         successAuthorization: true, 
-        errorAuthorization: null,
+        errorAuthorization: undefined,
         isLogged: true 
       };
     case LOGIN_ERROR:
@@ -51,14 +62,14 @@ export const authorizationReducer = (state = initialState, action) => {
         ...state, 
         requestAuthorization: true, 
         successAuthorization: false, 
-        errorAuthorization: null 
+        errorAuthorization: undefined 
       };
     case LOGOUT_SUCCESS:
       return { 
         ...state, 
         requestAuthorization: false, 
         successAuthorization: true, 
-        errorAuthorization: null,
+        errorAuthorization: undefined,
         isLogged: false 
       };
     case LOGOUT_ERROR:
@@ -73,14 +84,14 @@ export const authorizationReducer = (state = initialState, action) => {
         ...state, 
         requestToken: true, 
         successToken: false, 
-        errorToken: null 
+        errorToken: undefined 
       };
     case TOKEN_SUCCESS:
       return { 
         ...state, 
         requestToken: false, 
         successToken: true, 
-        errorToken: null,
+        errorToken: undefined,
         isLogged: true 
       };
     case TOKEN_ERROR:
@@ -95,14 +106,14 @@ export const authorizationReducer = (state = initialState, action) => {
         ...state, 
         requestToken: false, 
         successToken: false, 
-        errorToken: null,
+        errorToken: undefined,
       };
     case CLEAR_AUTH:
       return { 
         ...state, 
         requestAuthorization: false, 
         successAuthorization: false, 
-        errorAuthorization: null,
+        errorAuthorization: undefined,
       };
     default:
       return state;

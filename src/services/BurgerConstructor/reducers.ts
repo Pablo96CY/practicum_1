@@ -1,4 +1,6 @@
 import { Ingredients } from "../../utils/enum";
+import { Ingredient } from "../../utils/interfaces";
+import { TBurgerConstructorActions } from "../../utils/types";
 import { 
   ADD_ITEM, 
   DELETE_ITEM, 
@@ -6,12 +8,17 @@ import {
   CLEAR_ITEMS 
 } from "./actions";
 
-const constructorState = {
+type TСonstructorState = {
+  items: Array<Ingredient>
+  bun?: Ingredient
+}
+
+const constructorState: TСonstructorState = {
   items: [],
-  bun: null,
+  bun: undefined,
 };
 
-export const constructorReducer = (state = constructorState, action) => {
+export const constructorReducer = (state = constructorState, action: TBurgerConstructorActions): TСonstructorState => {
   switch (action.type) {
     case ADD_ITEM: {
       if (action.item.type === Ingredients.bun) {
@@ -55,7 +62,7 @@ export const constructorReducer = (state = constructorState, action) => {
       return {
         ...state,
         items: [],
-        bun: null
+        bun: undefined
       };
     }
     default:

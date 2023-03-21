@@ -15,7 +15,7 @@ export interface Ingredient {
 
 export interface IngredientsProps {
   items: Ingredient[],
-  bun: Ingredient
+  bun?: Ingredient
 }
 
 export interface IUser {

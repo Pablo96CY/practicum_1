@@ -1,3 +1,4 @@
+import { TUserDataActions } from '../../utils/types';
 import {
   GET_USER_DATA_REQUEST,
   GET_USER_DATA_SUCCESS,
@@ -18,7 +19,7 @@ const initialState = {
   },
 };
 
-export const userDataReducer = (state = initialState, action) => {
+export const userDataReducer = (state = initialState, action: TUserDataActions) => {
   switch (action.type) {
     case GET_USER_DATA_REQUEST:
       return { 

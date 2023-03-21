@@ -1,12 +1,31 @@
 import { registerUser } from "../../utils/methods";
+import { TUserFullForm } from "../../utils/types";
 
 export const REGISTRATION_REQUEST = "REGISTRATION_REQUEST";
 export const REGISTRATION_SUCCESS = "REGISTRATION_SUCCESS";
 export const REGISTRATION_ERROR = "REGISTRATION_ERROR";
 export const CLEAR_REGISTRATION = "CLEAR_REGISTRATION";
 
-export const registrationAction = (form) => {
-  return (dispatch) => {
+export interface IRegistrationRequest {
+  readonly type: typeof REGISTRATION_REQUEST;
+}
+
+export interface IRegistrationSuccess {
+  readonly type: typeof REGISTRATION_SUCCESS;
+}
+
+export interface IRegistrationError {
+  readonly type: typeof REGISTRATION_ERROR;
+  readonly message: string;
+}
+
+export interface IClearRegistration {
+  readonly type: typeof CLEAR_REGISTRATION;
+  readonly message: string;
+}
+
+export const registrationAction = (form: TUserFullForm) => {
+  return (dispatch: any) => {
     dispatch({ type: REGISTRATION_REQUEST });
     registerUser(form).then(() => {
       dispatch({ 

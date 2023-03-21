@@ -1,3 +1,4 @@
+import { TRegistrationActions } from '../../utils/types';
 import {
   REGISTRATION_REQUEST,
   REGISTRATION_SUCCESS,
@@ -11,7 +12,7 @@ const initialState = {
   errorRegistration: null,
 };
 
-export const registrationReducer = (state = initialState, action) => {
+export const registrationReducer = (state = initialState, action: TRegistrationActions) => {
   switch (action.type) {
     case REGISTRATION_REQUEST:
       return { 
