@@ -60,7 +60,7 @@ const ForgotPasswordPage = () => {
 
   const sendEmail = (e: FormEvent) => {
     e.preventDefault();
-    dispatch<any>(forgotPasswordAction(email));
+    dispatch<any>(forgotPasswordAction(email as any));
   };
 
   return (

@@ -18,7 +18,7 @@ const ProtectedRoutes: FC<IProps> = ({element}) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const from = location.state?.from || BASE_ROOT;
+  const from = location.pathname || BASE_ROOT;
 
   const { user }: IUser = useSelector((store: TRootState) => store.userReducer);
 
@@ -62,7 +62,6 @@ const ProtectedRoutes: FC<IProps> = ({element}) => {
       dispatch({
         type: CLEAR_TOKEN
       });
-      dispatch<any>(loginAction());
     }
   }, [
     dispatch, 

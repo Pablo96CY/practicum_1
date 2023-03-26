@@ -9,6 +9,45 @@
   text-align: center;
 }
 
+.pages_form_container_proile_edit {
+  padding-top: 100px;
+  text-align: center;
+  margin-left: 100px;
+}
+
+.pages_form_container_proile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.pages_form_container_profile_inner {
+  display: flex;
+  justify-content: start;
+}
+
+.pages_form_container_profile_tabs {
+  width: 320px;
+  padding-top: 80px;
+  margin-left: 300px;
+  margin-right: 60px;
+}
+
+.pages_form_container_profile_tabs_ul {
+  list-style: none;
+  padding: 0;
+}
+
+.pages_form_container_profile_tabs a {
+  text-decoration: none;
+  line-height: 64px;
+}
+
+.pages_form_container_profile_tabs_text {
+  color: #404052;
+  margin-top: 80px;
+}
+
 .pages_link {
   color: #4C4CFF;
   text-decoration: none;
@@ -30,32 +69,67 @@
   margin-right: 165px;
 }
 
-.pages_form_container_profile {
-  justify-content: flex-start;
-}
-
-.pages_form_container_profile_inner {
+.pages_feed_orders {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
+  gap: 16px;
+  max-height: calc(100vh - 110px);
+  overflow: auto;
+  padding-right: 8px;
+  width: 580px;
+  scrollbar-color: #8585AD #2F2F37;
+  scrollbar-width: thin;
 }
 
-.pages_form_container_profile_tabs {
-  width: 320px;
-  margin-left: 20px;
-  margin-right: 60px;
+.pages_feed .pages_feed_orders {
+  max-height: calc(100vh - 250px);
 }
 
-.pages_form_container_profile_tabs_ul {
-  list-style: none;
-  padding: 0;
+.pages_feed_orders::-webkit-scrollbar {
+  background-color: #2F2F37;
+  width: 8px;
 }
 
-.pages_form_container_profile_tabs a {
-  text-decoration: none;
-  line-height: 64px;
+.pages_feed_orders::-webkit-scrollbar-thumb {
+  background-color: #8585AD;
 }
 
-.pages_form_container_profile_tabs_text {
-  color: #404052;
+.pages_content {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 1230px;
+  max-width: 1250px;
+}
+
+.pages_left_block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 600px;
+}
+
+.pages_right_block {
+  margin-left: 60px;
   margin-top: 80px;
+}
+
+.pages_orders_container {
+  margin-left: 100px;
+  padding-right: 8px;
+  padding-top: 10px;
+}
+
+.pages_orders_container_p {
+  margin-bottom: 8px;
+}
+
+.pages_orders_info_main {
+  margin-top: 60px;
+}
+
+.pages_feed_top_margin {
+  margin-top: 24px;
 }

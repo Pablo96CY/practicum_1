@@ -1,0 +1,27 @@
+.order_list_main {
+  display: flex; 
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+  height: 900px;
+  overflow: auto;
+  padding-right: 8px;
+  width: 580px;
+  margin-top: 16px;
+}
+
+.order_list_main_personal {
+  width: 796px;
+}
+
+.order_list_main::-webkit-scrollbar {
+  width: 10px;
+}
+
+.order_list_main::-webkit-scrollbar-track {
+  background: #2F2F37
+}
+
+.order_list_main::-webkit-scrollbar-thumb {
+  background: #8585AD;
+}

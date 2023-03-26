@@ -119,7 +119,7 @@ const BurgerConstructor = () => {
             isLocked
             key={`${bun && bun._id}_top`}
             text={bun ? `${bun.name} (верх)` : `${localize.AddBun}`}
-            price={bun && bun.price}
+            price={bun ? bun.price : 0}
             thumbnail={bun ? bun.image! : BunImage.BUN_1}
             extraClass={style.bun}
           />
@@ -146,7 +146,7 @@ const BurgerConstructor = () => {
             isLocked
             key={`${bun && bun._id}_top`}
             text={bun ? `${bun.name} (низ)` : `${localize.AddBun}`}
-            price={bun && bun.price}
+            price={bun ? bun.price : 0}
             thumbnail={bun ? bun.image! : BunImage.BUN_2}
             extraClass={style.bun}
           />

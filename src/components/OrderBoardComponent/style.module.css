@@ -1,0 +1,49 @@
+.orders_board {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 100px;
+}
+
+.orders_board_text {
+  text-shadow: 0px 0px 16px rgba(51, 51, 255, 0.25), 
+    4px 0px 8px rgba(51, 51, 255, 0.25), 
+    0px 4px 32px rgba(51, 51, 255, 0.5);
+  padding-bottom: 32px;
+}
+
+.orders_board_li {
+  margin-top: 8px;
+  margin-right: 32px;
+}
+
+.orders_board_ul {
+  margin: 0;
+  padding: 0;
+}
+
+.orders_board_number {
+  display: flex; 
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 300px;
+  margin: 0;
+  padding: 0;
+  margin-top: 12px;
+}
+
+.orders_board_ready_color {
+  color: #00CCCC;
+}
+
+.orders_board_ready_link {
+  color: #00CCCC;
+  cursor: pointer; 
+  text-decoration: none;
+}
+
+.orders_board_in_progress {
+  color: #FFFFFF;
+  cursor: pointer; 
+  text-decoration: none;
+}

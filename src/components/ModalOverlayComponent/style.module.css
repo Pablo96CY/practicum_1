@@ -4,3 +4,10 @@
   position: fixed;
   inset: 0;
 }
+
+.special_overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  inset: 0;
+}

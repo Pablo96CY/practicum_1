@@ -4,11 +4,12 @@ import style from "./style.module.css";
 
 interface IProps {
   onClose: () => void,
+  isBlackBackground?: boolean
 }
 
-const ModalOverlay = ({ onClose }: IProps) => {
+const ModalOverlay = ({ onClose, isBlackBackground }: IProps) => {
   return ( 
-    <div className={style.overlay} onClick={onClose}/> 
+    <div className={isBlackBackground ? style.special_overlay : style.overlay} onClick={onClose}/> 
   );
 }
 

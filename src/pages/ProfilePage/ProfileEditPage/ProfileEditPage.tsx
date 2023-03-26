@@ -51,7 +51,7 @@ const ProfileEditPage = () => {
   };
 
   return (
-    <form className={commonStyle.pages_container_inner} onSubmit={submitForm}>
+    <form className={commonStyle.pages_form_container_proile_edit} onSubmit={submitForm}>
       <Input 
         extraClass={commonStyle.pages_form_p_email_password}
         placeholder={localize.Name}
