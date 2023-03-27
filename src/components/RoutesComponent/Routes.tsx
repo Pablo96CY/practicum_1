@@ -107,7 +107,21 @@ const RoutesComponent = () => {
             element={
               <ProfileOrderPage/>
             } 
-          />
+          >
+            {stateLocation &&
+              <Route 
+                path={`${PROFILE_ORDERS_ROOT}/:id`} 
+                element={
+                  <Modal 
+                    isOrder={true} 
+                    onClose={handleCloseModalDetail}
+                  >
+                    <OrderInfo/>
+                  </Modal>
+                } 
+              />
+            }
+          </Route>
         </Route>
         <Route 
           path={`${INGREDIENTS_ROOT}/:id`} 
@@ -126,7 +140,21 @@ const RoutesComponent = () => {
           element={
             <FeedPage/>
           } 
-        />
+        >
+          {stateLocation &&
+            <Route 
+              path={`${FEED_ROOT}/:id`} 
+              element={
+                <Modal 
+                  isOrder={true} 
+                  onClose={handleCloseModalDetail}
+                >
+                  <OrderInfo/>
+                </Modal>
+              } 
+            />
+          }
+        </Route>
         <Route 
           path={`${FEED_ROOT}/:id`} 
           element={
