@@ -1,5 +1,4 @@
 import React, { useMemo, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router";
 import { useDrop } from "react-dnd";
 import { v4 as uuid } from 'uuid';
@@ -15,21 +14,21 @@ import BurgerConstructorMainIngredient from "../BurgerConstructorItemComponent/B
 import { createNewOrder, ORDER_CLOSE_MODAL, ORDER_OPEN_MODAL } from "../../services/OrderDetails/actions";
 import { LOGIN_ROOT } from "../../utils/routes";
 import { getUserDataAction } from "../../services/UserData/actions";
-import { TRootState } from "../../utils/types";
-import { IngredientsProps, IUser } from "../../utils/interfaces";
+import { useDispatch, useSelector } from "../../utils/helpers";
+import { Ingredient } from "../../utils/interfaces";
 
 const BurgerConstructor = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { items, bun }: IngredientsProps = useSelector((store: TRootState) => store.burgerConstructor);
+  const { items, bun } = useSelector(store => store.burgerConstructor);
 
-  const { newOrderNumber, isOpen } = useSelector((store: TRootState) => store.orderDetails);
+  const { newOrderNumber, isOpen } = useSelector(store => store.orderDetails);
 
-  const { user }: IUser = useSelector((store: TRootState) => store.userReducer);
+  const { user } = useSelector(store => store.userReducer);
 
   useEffect(() => {
-    dispatch<any>(getUserDataAction());
+    dispatch(getUserDataAction());
   }, [dispatch]);
 
   useEffect(() => {
@@ -45,7 +44,7 @@ const BurgerConstructor = () => {
 
   const [, dropTopBun] = useDrop({
     accept: [Ingredients.bun],
-    drop(item) {
+    drop(item: Ingredient) {
       dispatch({ 
         type: ADD_ITEM, 
         item: item 
@@ -55,7 +54,7 @@ const BurgerConstructor = () => {
 
   const [, dropBottomBun] = useDrop({
     accept: [Ingredients.bun],
-    drop(item) {
+    drop(item: Ingredient) {
       dispatch({ 
         type: ADD_ITEM, 
         item: item 
@@ -65,7 +64,7 @@ const BurgerConstructor = () => {
 
   const [, dropTargetIngredient] = useDrop({
     accept: [Ingredients.sauce, Ingredients.main],
-    drop(item) {
+    drop(item: Ingredient) {
       dispatch({ 
         type: ADD_ITEM, 
         item: item 
@@ -93,7 +92,7 @@ const BurgerConstructor = () => {
 
   const onOpen = () => {
     if(!!user?.name && user.name !== '') {
-      dispatch<any>(createNewOrder([...items, bun, bun]));
+      dispatch(createNewOrder([...items, bun, bun]));
     } else {
       navigate(LOGIN_ROOT, { replace: true });
     }

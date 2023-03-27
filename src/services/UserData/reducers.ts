@@ -1,4 +1,4 @@
-import { TUserDataActions } from '../../utils/types';
+import { TUser, TUserDataActions } from '../../utils/types';
 import {
   GET_USER_DATA_REQUEST,
   GET_USER_DATA_SUCCESS,
@@ -9,9 +9,16 @@ import {
   CLEAR_USER_DATA
 } from './actions';
 
-const initialState = {
+type TUserDataState = {
+  requestUserData: boolean;
+  errorUserData?: string;
+  successUserData: boolean;
+  user: TUser
+}
+
+const initialState: TUserDataState = {
   requestUserData: false,
-  errorUserData: null,
+  errorUserData: undefined,
   successUserData: false,
   user: {
     name: "",
@@ -25,7 +32,7 @@ export const userDataReducer = (state = initialState, action: TUserDataActions) 
       return { 
         requestUserData: true, 
         successUserData: false, 
-        errorUserData: null,
+        errorUserData: undefined,
         user: initialState.user 
       };
     case GET_USER_DATA_SUCCESS:
@@ -39,7 +46,8 @@ export const userDataReducer = (state = initialState, action: TUserDataActions) 
         } 
       };
     case GET_USER_DATA_ERROR:
-      return { 
+      return {
+        ...state, 
         requestUserData: false, 
         successUserData: false, 
         errorUserData: action.message
@@ -49,7 +57,7 @@ export const userDataReducer = (state = initialState, action: TUserDataActions) 
         ...state,
         requestUserData: true, 
         successUserData: false, 
-        errorUserData: null
+        errorUserData: undefined
       };
     case PATCH_USER_DATA_SUCCESS:
       return { 
@@ -69,7 +77,7 @@ export const userDataReducer = (state = initialState, action: TUserDataActions) 
         ...state,
         requestUserData: false, 
         successUserData: false, 
-        errorUserData: null,
+        errorUserData: undefined,
       };
     default:
       return state;

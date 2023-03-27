@@ -18,7 +18,7 @@ const constructorState: TСonstructorState = {
   bun: undefined,
 };
 
-export const constructorReducer = (state = constructorState, action: TBurgerConstructorActions): TСonstructorState => {
+export const constructorReducer = (state = constructorState, action: TBurgerConstructorActions) => {
   switch (action.type) {
     case ADD_ITEM: {
       if (action.item.type === Ingredients.bun) {

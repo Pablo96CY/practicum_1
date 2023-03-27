@@ -1,5 +1,4 @@
 import React, { useMemo, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { 
   CurrencyIcon, 
@@ -7,24 +6,25 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import { Ingredient } from '../../utils/interfaces';
-import { TRootState } from '../../utils/types';
 import { getOrderInfoAction } from '../../services/OrderInfo/actions';
 import { OrderStatus } from '../../utils/enum';
 import localize from '../../utils/localize';
 import style from './style.module.css';
+import { useDispatch, useSelector } from '../../utils/helpers';
+import { TIngredientWithCount } from '../../utils/types';
 
 const OrderInfo = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch<any>(getOrderInfoAction(id));
+    dispatch(getOrderInfoAction(id));
   }, [dispatch, id]);
 
-  const { order } = useSelector((store: TRootState) => store.orderInfoReducer);
-  const { data } = useSelector((store: TRootState) => store.burgerIngredients);
+  const { order } = useSelector(store => store.orderInfoReducer);
+  const { data } = useSelector(store => store.burgerIngredients);
 
-  const items = useMemo(() => 
+  const items: Array<TIngredientWithCount> = useMemo(() => 
     {
       if(order?.ingredients) {
         let group: any = {};
@@ -58,7 +58,7 @@ const OrderInfo = () => {
     {
       if(items) {
         return items!.reduce(
-          (currentSum: number, item: any) => 
+          (currentSum: number, item) => 
           item!.price * item!.numberOfItems + currentSum, 0)
       }
     }, 
@@ -99,7 +99,7 @@ const OrderInfo = () => {
           {localize.Compound}
         </p>
         <section className={style.order_info_body}>
-          {items && items.map((item: any, index: number) => {
+          {items && items.map((item, index: number) => {
             return (
               <li key={index} className={style.order_info_body_li}>
                 <div className={style.order_info_body_row}>

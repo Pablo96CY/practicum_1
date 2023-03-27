@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 import { 
   PERSONAL_ORDERS_START, 
@@ -10,10 +9,12 @@ import { TOrdersList, TRootState } from '../../../utils/types';
 import commonStyle from "../../../utils/commonPageStyles.module.css";
 import OrderList from '../../../components/OrderListComponent/OrderList';
 import localize from '../../../utils/localize';
+import { useDispatch, useSelector } from '../../../utils/helpers';
 
 const ProfileOrderPage = () => {
   const dispatch = useDispatch();
-  const { isConnected, error, message } = useSelector((store: TRootState) => store.personalOrderReducer);
+  
+  const { isConnected, error, message } = useSelector(store => store.personalOrderReducer);
 
   const messages: TOrdersList | undefined = useMemo(() => {
     if (message) {

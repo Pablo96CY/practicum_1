@@ -1,7 +1,10 @@
 import React, { FormEvent, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { EmailInput, PasswordInput, Button } from "@ya.praktikum/react-developer-burger-ui-components";
+import { 
+  EmailInput, 
+  PasswordInput, 
+  Button 
+} from "@ya.praktikum/react-developer-burger-ui-components";
 
 import { 
   BASE_ROOT,
@@ -13,8 +16,7 @@ import localize from '../../utils/localize';
 import { CLEAR_USER_DATA, getUserDataAction } from '../../services/UserData/actions';
 import { CLEAR_AUTH, CLEAR_TOKEN, loginAction } from '../../services/Authorization/actions';
 import { CLEAR_RESET_PASSWORD } from '../../services/PasswordOperations/actions';
-import { TRootState } from '../../utils/types';
-import { IUser } from '../../utils/interfaces';
+import { useDispatch, useSelector } from '../../utils/helpers';
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
@@ -23,11 +25,11 @@ const LoginFormPage = () => {
 
   const from = location.state?.from || BASE_ROOT;
 
-  const { user }: IUser = useSelector((store: TRootState) => store.userReducer);
+  const { user } = useSelector(store => store.userReducer);
 
-  const { isLogged } = useSelector((store: TRootState) => store.authReducer);
+  const { isLogged } = useSelector(store => store.authReducer);
 
-  const { successRegistration } = useSelector((store: TRootState) => store.registReducer);
+  const { successRegistration } = useSelector(store => store.registReducer);
 
   const [ password, setPassword ] = useState('');
   const [ email, setEmail ] = useState('');
@@ -38,7 +40,7 @@ const LoginFormPage = () => {
     });
     if(successRegistration) {
       alert(localize.SuccessDataSave);
-    } else dispatch<any>(getUserDataAction());
+    } else dispatch(getUserDataAction());
   }, [
     successRegistration,
     dispatch
@@ -70,7 +72,7 @@ const LoginFormPage = () => {
       password: password
     }
     e.preventDefault();
-    dispatch<any>(loginAction(form));
+    dispatch(loginAction(form));
   };
 
   return (

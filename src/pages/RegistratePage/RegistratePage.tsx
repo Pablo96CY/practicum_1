@@ -1,5 +1,4 @@
 import React, { FormEvent, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
   Input, 
@@ -14,8 +13,7 @@ import localize from '../../utils/localize';
 import { CLEAR_REGISTRATION, registrationAction } from '../../services/Registration/actions';
 import { CLEAR_USER_DATA, getUserDataAction } from '../../services/UserData/actions';
 import { CLEAR_AUTH } from '../../services/Authorization/actions';
-import { TRootState } from '../../utils/types';
-import { IUser } from '../../utils/interfaces';
+import { useDispatch, useSelector } from '../../utils/helpers';
 
 const RegistrationPage = () => {
   const dispatch = useDispatch();
@@ -25,12 +23,12 @@ const RegistrationPage = () => {
   const [ password, setPassword ] = useState('');
   const [ email, setEmail ] = useState('');
 
-  const { user }: IUser = useSelector((store: TRootState) => store.userReducer);
+  const { user } = useSelector(store => store.userReducer);
 
-  const { successRegistration, errorRegistration } = useSelector((store: TRootState) => store.registReducer);
+  const { successRegistration, errorRegistration } = useSelector(store => store.registReducer);
 
   useEffect(() => {
-    dispatch<any>(getUserDataAction());
+    dispatch(getUserDataAction());
   }, [dispatch]);
 
   useEffect(() => {
@@ -72,7 +70,7 @@ const RegistrationPage = () => {
       password: password
     }
     e.preventDefault();
-    dispatch<any>(registrationAction(form));
+    dispatch(registrationAction(form));
   };
 
   return (

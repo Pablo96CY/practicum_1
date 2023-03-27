@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
 import { 
   COMMON_ORDERS_END, 
   COMMON_ORDERS_START 
 } from '../../services/CommonOrders/actions';
-import { TRootState } from '../../utils/types';
 import { WS_BASE_API_URL } from '../../utils/const';
 import commonStyle from "../../utils/commonPageStyles.module.css";
 import OrderList from '../../components/OrderListComponent/OrderList';
 import OrderBoard from '../../components/OrderBoardComponent/OrderBoard';
 import localize from '../../utils/localize';
+import { useDispatch, useSelector } from '../../utils/helpers';
 
 const FeedPage = () => {
   const dispatch = useDispatch();
-  const { isConnected, error, message } = useSelector((store: TRootState) => store.commonOrderReducer);
+  
+  const { isConnected, error, message } = useSelector(store => store.commonOrderReducer);
 
   useEffect(() => {
     dispatch({ 

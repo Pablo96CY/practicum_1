@@ -1,5 +1,8 @@
+import { AnyAction } from "redux";
+import { ThunkAction } from "redux-thunk";
+
 import { registerUser } from "../../utils/methods";
-import { TUserFullForm } from "../../utils/types";
+import { TRootState, TUserFullForm } from "../../utils/types";
 
 export const REGISTRATION_REQUEST = "REGISTRATION_REQUEST";
 export const REGISTRATION_SUCCESS = "REGISTRATION_SUCCESS";
@@ -21,11 +24,10 @@ export interface IRegistrationError {
 
 export interface IClearRegistration {
   readonly type: typeof CLEAR_REGISTRATION;
-  readonly message: string;
 }
 
-export const registrationAction = (form: TUserFullForm) => {
-  return (dispatch: any) => {
+export const registrationAction = (form: TUserFullForm): ThunkAction<void, TRootState, unknown, AnyAction> => {
+  return (dispatch) => {
     dispatch({ type: REGISTRATION_REQUEST });
     registerUser(form).then(() => {
       dispatch({ 

@@ -1,5 +1,8 @@
+import { AnyAction } from "redux";
+import { ThunkAction } from "redux-thunk";
+
 import { getUser, updateUser } from "../../utils/methods";
-import { TUserFullForm, TUserShortForm } from "../../utils/types";
+import { TRootState, TUserFullForm, TUserShortForm } from "../../utils/types";
 
 export const GET_USER_DATA_REQUEST = "GET_USER_DATA_REQUEST";
 export const GET_USER_DATA_SUCCESS = "GET_USER_DATA_SUCCESS";
@@ -40,8 +43,8 @@ export interface IUserDataClear {
   readonly type: typeof CLEAR_USER_DATA;
 }
 
-export const getUserDataAction = () => {
-  return (dispatch: any) => {
+export const getUserDataAction = (): ThunkAction<void, TRootState, unknown, AnyAction> => {
+  return (dispatch) => {
     dispatch({ 
       type: GET_USER_DATA_REQUEST 
     });
@@ -59,8 +62,8 @@ export const getUserDataAction = () => {
   }
 }
 
-export const patchUserDataAction = (form: TUserFullForm) => {
-  return (dispatch: any) => {
+export const patchUserDataAction = (form: TUserFullForm): ThunkAction<void, TRootState, unknown, AnyAction> => {
+  return (dispatch) => {
     dispatch({ 
       type: PATCH_USER_DATA_REQUEST 
     });

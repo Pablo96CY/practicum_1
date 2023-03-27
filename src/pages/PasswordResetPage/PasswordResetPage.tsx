@@ -1,7 +1,10 @@
 import React, { FormEvent, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { Input, PasswordInput, Button } from "@ya.praktikum/react-developer-burger-ui-components";
+import { 
+  Input, 
+  PasswordInput, 
+  Button 
+} from "@ya.praktikum/react-developer-burger-ui-components";
 
 import commonStyle from "../../utils/commonPageStyles.module.css";
 import localize from '../../utils/localize';
@@ -9,8 +12,7 @@ import { CLEAR_RESET_PASSWORD, resetPasswordAction } from '../../services/Passwo
 import { LOGIN_ROOT, PROFILE_ROOT } from '../../utils/routes';
 import { CLEAR_USER_DATA, getUserDataAction } from '../../services/UserData/actions';
 import { CLEAR_AUTH } from '../../services/Authorization/actions';
-import { TRootState } from '../../utils/types';
-import { IUser } from '../../utils/interfaces';
+import { useDispatch, useSelector } from '../../utils/helpers';
 
 const ResetPasswordPage = () => {
   const dispatch = useDispatch();
@@ -19,12 +21,12 @@ const ResetPasswordPage = () => {
   const [ password, setPassword ] = useState('');
   const [ code, setCode ] = useState('');
 
-  const { user }: IUser = useSelector((store: TRootState) => store.userReducer);
+  const { user } = useSelector(store => store.userReducer);
 
-  const { successPassword, errorPassword } = useSelector((store: TRootState) => store.passwordReducer);
+  const { successPassword, errorPassword } = useSelector(store => store.passwordReducer);
 
   useEffect(() => {
-    dispatch<any>(getUserDataAction());
+    dispatch(getUserDataAction());
   }, [dispatch]);
 
   useEffect(() => {
@@ -65,7 +67,7 @@ const ResetPasswordPage = () => {
       token: code
     }
     e.preventDefault();
-    dispatch<any>(resetPasswordAction(form));
+    dispatch(resetPasswordAction(form));
   };
 
   return (

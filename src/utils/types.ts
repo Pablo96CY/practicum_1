@@ -1,3 +1,5 @@
+import { ThunkDispatch } from "redux-thunk";
+
 import { 
   IAuthorizationClear, 
   IAuthorizationClearToken, 
@@ -42,6 +44,7 @@ import {
   IngredientModalClose, 
   IngredientModalOpen 
 } from "../services/IngredientsDetails/actions";
+import mainStore from "../services/mainStore";
 import { 
   IOrderRequest, 
   IOrderSuccess, 
@@ -95,8 +98,24 @@ import {
   IPatchUserDataError, 
   IUserDataClear 
 } from "../services/UserData/actions";
+import { Ingredient } from "./interfaces";
 
 export type TRootState = ReturnType<typeof rootReducer>;
+
+export type TAppDispatch = ThunkDispatch<TRootState, never, TAppActions>;
+
+export type TAppActions = 
+  TAuthorizationActions 
+  | TBurgerConstructorActions
+  | TIngredientModalrActions
+  | TBurgerIngredientsActions
+  | TOrderActions
+  | TPasswordOperationsActions
+  | TRegistrationActions
+  | TUserDataActions
+  | TCommonOrdersActions
+  | TPersonalOrdersActions
+  | TOrderInfoActions;
 
 export type TEmail = {
   email: string;
@@ -117,6 +136,15 @@ export type TUserShortForm = {
 export type TResetPassword = {
   password: string;
   token: string;
+};
+
+export type TUser = {
+  name: string,
+  email: string
+}
+
+export type TIngredientWithCount = Ingredient & {
+  numberOfItems: number
 };
 
 export type TOrder = {

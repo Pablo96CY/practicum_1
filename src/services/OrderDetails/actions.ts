@@ -1,5 +1,9 @@
+import { AnyAction } from "redux";
+import { ThunkAction } from "redux-thunk";
+
 import { Ingredient } from "../../utils/interfaces";
 import { createNewOrders } from "../../utils/methods";
+import { TRootState } from "../../utils/types";
 
 export const ORDER_REQUEST = "ORDER_REQUEST";
 export const ORDER_SUCCESS = "ORDER_SUCCESS";
@@ -28,8 +32,8 @@ export interface IOrderModalClose {
   readonly type: typeof ORDER_CLOSE_MODAL;
 }
 
-export const createNewOrder = (ingredients: any) => {
-  return (dispatch: any) => {
+export const createNewOrder = (ingredients: any): ThunkAction<void, TRootState, unknown, AnyAction> => {
+  return (dispatch) => {
     dispatch({
       type: ORDER_REQUEST,
     });

@@ -12,6 +12,8 @@ import {
   WEBSOCKET_TOKEN_ERROR_MESSAGE 
 } from '../utils/const';
 import { 
+  TAppDispatch,
+  TRootState,
   TWebSocketCommonOrdersActions, 
   TWebSocketPersonalOrdersActions 
 } from '../utils/types';
@@ -19,7 +21,7 @@ import {
 export const socketMiddleware = (
   webSocketsActions: TWebSocketPersonalOrdersActions | TWebSocketCommonOrdersActions
   ): Middleware => {
-  return (store: MiddlewareAPI<any, any>) => {
+  return (store: MiddlewareAPI<TAppDispatch, TRootState>) => {
     let socketMiddleware: {
       socket: WebSocket | undefined,
       timer: number,
@@ -31,7 +33,7 @@ export const socketMiddleware = (
       connected: false,
       url: ''
     }
-    
+
     return next => (action: AnyAction) => {
       const { dispatch } = store;
       if (action.type === webSocketsActions.onStart) {
@@ -99,7 +101,8 @@ export const socketMiddleware = (
         socketMiddleware.socket.onerror = () => {
           dispatch({ 
             type: webSocketsActions.onError, 
-            error: localize.Error });
+            error: localize.Error 
+          });
         };
         if (action.type === webSocketsActions.onEnd) {
           socketMiddleware = {
