@@ -1,8 +1,5 @@
-import { AnyAction } from 'redux';
-import { ThunkAction } from 'redux-thunk';
-
 import { getOrder } from '../../utils/methods';
-import { TOrder, TRootState } from '../../utils/types';
+import { TAppThunk, TOrder } from '../../utils/types';
 
 export const ORDER_INFO_REQUEST = "ORDER_INFO_REQUEST";
 export const ORDER_INFO_SUCCESS = "ORDER_INFO_SUCCESS";
@@ -22,7 +19,7 @@ export interface IOrderInfoErrorAction {
   message: string
 }
 
-export const getOrderInfoAction = (number?: string): ThunkAction<void, TRootState, unknown, AnyAction> => {
+export const getOrderInfoAction = (number?: string): TAppThunk => {
   return (dispatch) => {
     dispatch({ type: ORDER_INFO_REQUEST });
     getOrder(number).then(result => {

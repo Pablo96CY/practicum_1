@@ -1,4 +1,5 @@
-import { ThunkDispatch } from "redux-thunk";
+import { AnyAction } from "redux";
+import { ThunkAction, ThunkDispatch } from "redux-thunk";
 
 import { 
   IAuthorizationClear, 
@@ -103,6 +104,8 @@ import { Ingredient } from "./interfaces";
 export type TRootState = ReturnType<typeof rootReducer>;
 
 export type TAppDispatch = ThunkDispatch<TRootState, never, TAppActions>;
+
+export type TAppThunk = ThunkAction<void, TRootState, unknown, AnyAction>
 
 export type TAppActions = 
   TAuthorizationActions 

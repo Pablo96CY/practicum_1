@@ -30,7 +30,7 @@ const ProtectedRoutes: FC<IProps> = ({element}) => {
     successAuthorization,
     errorToken, 
     successToken 
-  } = useSelector((store: TRootState) => store.authReducer);
+  } = useSelector(store => store.authReducer);
 
   useEffect(() => {
     dispatch(getUserDataAction());

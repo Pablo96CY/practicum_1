@@ -1,8 +1,5 @@
-import { AnyAction } from "redux";
-import { ThunkAction } from "redux-thunk";
-
 import { loginUser, refreshToken, logoutUser } from "../../utils/methods";
-import { TEmailAndPassword, TRootState } from "../../utils/types";
+import { TAppThunk, TEmailAndPassword } from "../../utils/types";
 
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -63,7 +60,7 @@ export interface IAuthorizationClearToken {
   readonly type: typeof CLEAR_TOKEN;
 }
 
-export const loginAction = (form: TEmailAndPassword): ThunkAction<void, TRootState, unknown, AnyAction> => {
+export const loginAction = (form: TEmailAndPassword): TAppThunk => {
   return (dispatch) => {
     dispatch({ type: LOGIN_REQUEST });
     loginUser(form).then(data => {
@@ -88,7 +85,7 @@ export const loginAction = (form: TEmailAndPassword): ThunkAction<void, TRootSta
   }
 }
 
-export const logoutAction = (): ThunkAction<void, TRootState, unknown, AnyAction> => {
+export const logoutAction = (): TAppThunk => {
   return (dispatch) => {
     dispatch({ 
       type: LOGOUT_REQUEST 
@@ -112,7 +109,7 @@ export const logoutAction = (): ThunkAction<void, TRootState, unknown, AnyAction
   }
 }
 
-export const tokenAction = (): ThunkAction<void, TRootState, unknown, AnyAction> => {
+export const tokenAction = (): TAppThunk => {
   return (dispatch) => {
     dispatch({ 
       type: TOKEN_REQUEST 

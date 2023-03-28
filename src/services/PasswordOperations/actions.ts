@@ -1,8 +1,5 @@
-import { AnyAction } from "redux";
-import { ThunkAction } from "redux-thunk";
-
 import { forgotPassword, resetPassword } from "../../utils/methods";
-import { TEmail, TResetPassword, TRootState } from "../../utils/types";
+import { TAppThunk, TEmail, TResetPassword } from "../../utils/types";
 
 export const FORGOT_PASSWORD_REQUEST = "FORGOT_PASSWORD_REQUEST";
 export const FORGOT_PASSWORD_SUCCESS = "FORGOT_PASSWORD_SUCCESS";
@@ -42,7 +39,7 @@ export interface IClearResetPassword {
   readonly type: typeof CLEAR_RESET_PASSWORD;
 }
 
-export const forgotPasswordAction = (form: TEmail): ThunkAction<void, TRootState, unknown, AnyAction> => {
+export const forgotPasswordAction = (form: TEmail): TAppThunk => {
   return (dispatch) => {
     dispatch({ 
       type: FORGOT_PASSWORD_REQUEST 
@@ -60,7 +57,7 @@ export const forgotPasswordAction = (form: TEmail): ThunkAction<void, TRootState
   }
 }
 
-export const resetPasswordAction = (form: TResetPassword): ThunkAction<void, TRootState, unknown, AnyAction> => {
+export const resetPasswordAction = (form: TResetPassword): TAppThunk => {
   return (dispatch) => {
     dispatch({ 
       type: RESET_PASSWORD_REQUEST 

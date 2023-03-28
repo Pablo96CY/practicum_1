@@ -1,5 +1,4 @@
 import React, { FC, useMemo } from "react";
-import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import { 
@@ -8,11 +7,12 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import { Ingredient } from "../../utils/interfaces";
-import { TOrder, TRootState } from "../../utils/types";
+import { TOrder } from "../../utils/types";
 import { OrderStatus } from "../../utils/enum";
 import { MAX_ITEMS_VALUE } from "../../utils/const";
 import localize from "../../utils/localize";
 import style from './style.module.css';
+import { useSelector } from "../../utils/helpers";
 
 interface IProps {
   order: TOrder,
@@ -22,7 +22,7 @@ interface IProps {
 const OrderItem: FC<IProps> = ({order, personal}) => {
   const location = useLocation(); 
   
-  const { data } = useSelector((store: TRootState) => store.burgerIngredients);
+  const { data } = useSelector(store => store.burgerIngredients);
 
   const items = useMemo(() => 
     order.ingredients.map((id: string) => 
