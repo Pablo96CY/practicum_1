@@ -1,11 +1,11 @@
 import React, { FC, useRef } from 'react';
-import { useDispatch } from 'react-redux';
 import { useDrag, useDrop } from 'react-dnd';
 import { ConstructorElement, DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 import { REPLACE_ITEM } from '../../services/BurgerConstructor/actions';
 import style from "./style.module.css";
 import { Ingredient } from '../../utils/interfaces';
+import { useDispatch } from '../../utils/helpers';
 
 interface IProps {
   item: Ingredient,
@@ -13,7 +13,7 @@ interface IProps {
   onDelete: (i: number) => void
 }
 
-const BurgerConstructorMainIngredient: FC<IProps> = ({item, index, onDelete }) => {
+const BurgerConstructorMainIngredient: FC<IProps> = ({ item, index, onDelete }) => {
   const ref = useRef(null);
   
   const dispatch = useDispatch();
@@ -41,7 +41,7 @@ const BurgerConstructorMainIngredient: FC<IProps> = ({item, index, onDelete }) =
   return (
     <li 
       className={style.main_item_container} 
-      key={index} 
+      key={item._id} 
       ref={ref}
     >
       <DragIcon type="primary" />

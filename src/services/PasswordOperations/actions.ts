@@ -1,14 +1,45 @@
 import { forgotPassword, resetPassword } from "../../utils/methods";
+import { TAppThunk, TEmail, TResetPassword } from "../../utils/types";
 
 export const FORGOT_PASSWORD_REQUEST = "FORGOT_PASSWORD_REQUEST";
 export const FORGOT_PASSWORD_SUCCESS = "FORGOT_PASSWORD_SUCCESS";
-export const FORGOT_PASSWORD_ERROR = "FORGOT_PASSWORD_SUCCESS";
+export const FORGOT_PASSWORD_ERROR = "FORGOT_PASSWORD_ERROR";
 export const RESET_PASSWORD_REQUEST = "RESET_PASSWORD_REQUEST";
 export const RESET_PASSWORD_SUCCESS = "RESET_PASSWORD_SUCCESS";
 export const RESET_PASSWORD_ERROR = "RESET_PASSWORD_ERROR";
 export const CLEAR_RESET_PASSWORD = "CLEAR_RESET_PASSWORD";
 
-export const forgotPasswordAction = (form) => {
+export interface IForgotPasswordRequest {
+  readonly type: typeof FORGOT_PASSWORD_REQUEST;
+}
+
+export interface IForgotPasswordSuccess {
+  readonly type: typeof FORGOT_PASSWORD_SUCCESS;
+}
+
+export interface IForgotPasswordError {
+  readonly type: typeof FORGOT_PASSWORD_ERROR;
+  readonly message: string;
+}
+
+export interface IResetPasswordRequest {
+  readonly type: typeof RESET_PASSWORD_REQUEST;
+}
+
+export interface IResetPasswordSuccess {
+  readonly type: typeof RESET_PASSWORD_SUCCESS;
+}
+
+export interface IResetPasswordError {
+  readonly type: typeof RESET_PASSWORD_ERROR;
+  readonly message: string;
+}
+
+export interface IClearResetPassword {
+  readonly type: typeof CLEAR_RESET_PASSWORD;
+}
+
+export const forgotPasswordAction = (form: TEmail): TAppThunk => {
   return (dispatch) => {
     dispatch({ 
       type: FORGOT_PASSWORD_REQUEST 
@@ -26,7 +57,7 @@ export const forgotPasswordAction = (form) => {
   }
 }
 
-export const resetPasswordAction = (form) => {
+export const resetPasswordAction = (form: TResetPassword): TAppThunk => {
   return (dispatch) => {
     dispatch({ 
       type: RESET_PASSWORD_REQUEST 

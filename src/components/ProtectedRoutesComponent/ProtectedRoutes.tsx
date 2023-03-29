@@ -1,13 +1,12 @@
 import React, { FC, ReactElement, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { BASE_ROOT, LOGIN_ROOT } from '../../utils/routes';
 import { getUserDataAction } from '../../services/UserData/actions';
-import { CLEAR_AUTH, CLEAR_TOKEN, loginAction, tokenAction } from '../../services/Authorization/actions';
+import { CLEAR_AUTH, CLEAR_TOKEN, tokenAction } from '../../services/Authorization/actions';
 import localize from '../../utils/localize';
 import { TRootState } from '../../utils/types';
-import { IUser } from '../../utils/interfaces';
+import { useDispatch, useSelector } from '../../utils/helpers';
 
 interface IProps {
   element: ReactElement
@@ -18,29 +17,29 @@ const ProtectedRoutes: FC<IProps> = ({element}) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const from = location.state?.from || BASE_ROOT;
+  const from = location.pathname || BASE_ROOT;
 
-  const { user }: IUser = useSelector((store: TRootState) => store.userReducer);
+  const { user } = useSelector(store => store.userReducer);
 
-  const { errorUserData } = useSelector((store: TRootState) => store.userReducer);
+  const { errorUserData } = useSelector(store => store.userReducer);
 
-  const { isLogged } = useSelector((store: TRootState) => store.authReducer);
+  const { isLogged } = useSelector(store => store.authReducer);
 
   const { 
     errorAuthorization, 
     successAuthorization,
     errorToken, 
     successToken 
-  } = useSelector((store: TRootState) => store.authReducer);
+  } = useSelector(store => store.authReducer);
 
   useEffect(() => {
-    dispatch<any>(getUserDataAction());
+    dispatch(getUserDataAction());
   }, [dispatch]);
 
   useEffect(() => {
     if(errorUserData) {
       if (errorUserData === localize.JWTError) {
-        dispatch<any>(tokenAction());
+        dispatch(tokenAction());
       } else {
         navigate(LOGIN_ROOT, { replace: true, state: { from } });
       }
@@ -62,7 +61,6 @@ const ProtectedRoutes: FC<IProps> = ({element}) => {
       dispatch({
         type: CLEAR_TOKEN
       });
-      dispatch<any>(loginAction());
     }
   }, [
     dispatch, 
@@ -76,7 +74,7 @@ const ProtectedRoutes: FC<IProps> = ({element}) => {
       dispatch({
         type: CLEAR_AUTH
       });
-      dispatch<any>(getUserDataAction());
+      dispatch(getUserDataAction());
     } 
     if(errorAuthorization) {
       dispatch({

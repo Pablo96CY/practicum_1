@@ -9,7 +9,11 @@ import {
 
 import style from "./style.module.css";
 import localize from "../../utils/localize";
-import { BASE_ROOT, COSTRUCTOR_ROOT, PROFILE_ROOT } from "../../utils/routes";
+import { 
+  BASE_ROOT, 
+  FEED_ROOT, 
+  PROFILE_ROOT 
+} from "../../utils/routes";
 
 const Header = () => {
   return (
@@ -29,7 +33,7 @@ const Header = () => {
             <ListIcon type="primary" />
             <Link 
               className={style.link} 
-              to={COSTRUCTOR_ROOT}
+              to={FEED_ROOT}
             >
               {localize.OrderList}
             </Link>

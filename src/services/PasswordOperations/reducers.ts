@@ -1,3 +1,4 @@
+import { TPasswordOperationsActions } from '../../utils/types';
 import {
   FORGOT_PASSWORD_REQUEST,
   FORGOT_PASSWORD_SUCCESS,
@@ -15,7 +16,7 @@ const initialState = {
   isReadyForChange: false
 };
 
-export const passwordOperations = (state = initialState, action) => {
+export const passwordOperations = (state = initialState, action: TPasswordOperationsActions) => {
   switch (action.type) {
     case FORGOT_PASSWORD_REQUEST:
       return { 

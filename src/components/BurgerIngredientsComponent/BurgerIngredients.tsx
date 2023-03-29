@@ -1,18 +1,17 @@
 import React, { useState, useMemo, useRef } from "react";
-import { useSelector } from 'react-redux';
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import style from "./style.module.css";
 import Card from "../BurgerCardComponent/BurgerCard";
 import localize from "../../utils/localize";
 import { Ingredients } from "../../utils/enum";
-import { TRootState } from "../../utils/types";
-import { Ingredient, IngredientsProps } from "../../utils/interfaces";
+import { Ingredient } from "../../utils/interfaces";
+import { useSelector } from "../../utils/helpers";
 
 const BurgerIngredients = () => {
-  const data = useSelector((store: TRootState) => store.burgerIngredients);
+  const data = useSelector(store => store.burgerIngredients);
 
-  const { items, bun }: IngredientsProps  = useSelector((store: TRootState) => store.burgerConstructor);
+  const { items, bun }  = useSelector(store => store.burgerConstructor);
 
   const [activeTab, setActiveTab] = useState(Ingredients.bun);
 
@@ -60,7 +59,7 @@ const BurgerIngredients = () => {
 
   const counterIngredients = useMemo(() => {
     const count: any = {};
-      items.map((item: Ingredient) => {
+      items.map((item) => {
         if (!(item._id in count)) {
           count[item._id] = 0;
         }

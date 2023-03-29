@@ -8,6 +8,9 @@ import { authorizationReducer } from "./Authorization/reducers";
 import { passwordOperations } from "./PasswordOperations/reducers";
 import { userDataReducer } from "./UserData/reducers";
 import { registrationReducer } from "./Registration/reducers";
+import { commonOrdersReducer } from "./CommonOrders/reducers";
+import { ordersInfoReducer } from "./OrderInfo/reducers";
+import { personalOrdersReducer } from "./PersonalOrders/reducers";
 
 export const rootReducer = combineReducers({
   burgerConstructor: constructorReducer,
@@ -18,4 +21,7 @@ export const rootReducer = combineReducers({
   passwordReducer: passwordOperations,
   userReducer: userDataReducer,
   registReducer: registrationReducer,
+  commonOrderReducer: commonOrdersReducer,
+  orderInfoReducer: ordersInfoReducer,
+  personalOrderReducer: personalOrdersReducer
 });

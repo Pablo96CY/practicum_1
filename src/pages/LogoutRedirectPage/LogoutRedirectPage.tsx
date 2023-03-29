@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { LOGIN_ROOT } from '../../utils/routes';
 import commonStyle from "../../utils/commonPageStyles.module.css";
 import localize from '../../utils/localize';
 import { logoutAction } from '../../services/Authorization/actions';
-import { TRootState } from '../../utils/types';
+import { useDispatch, useSelector } from '../../utils/helpers';
 
 const LogoutPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isLogged } = useSelector((store: TRootState) => store.authReducer);
+  const { isLogged } = useSelector(store => store.authReducer);
 
   useEffect(() => {
-    dispatch<any>(logoutAction());
+    dispatch(logoutAction());
   }, [dispatch]);
 
   useEffect(() => {

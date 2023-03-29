@@ -1,7 +1,7 @@
 export const Ingredients = {
   bun: "bun",
   sauce: "sauce",
-  main: "main",
+  main: "main"
 }
 
 export const KeyBoard = {
@@ -13,6 +13,12 @@ export const Methods = {
   POST: 'POST',
   GET: 'GET',
   PATCH: 'PATCH'
+}
+
+export const OrderStatus = {
+  done: 'done',
+  pending: 'pending',
+  created: 'created',
 }
 
 export const BunImage = {

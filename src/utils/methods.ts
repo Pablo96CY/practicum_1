@@ -7,12 +7,17 @@ export const getIngredientsMainData = () => {
   return request(`${INGREDIENTS_DATA_API_URL}/ingredients`)
 };
 
+export const getOrder = (number?: string) => {
+  return request(`${INGREDIENTS_DATA_API_URL}/orders/${number}`);
+}
+
 export const createNewOrders = (ingredientsId: string) => {
   return request(`${INGREDIENTS_DATA_API_URL}/orders`, 
     {
       method: Methods.POST,
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: "Bearer " + localStorage.getItem("accessToken")
       },
       body: JSON.stringify({ ingredients: ingredientsId })
     }
@@ -46,7 +51,7 @@ export const loginUser = (user: TEmailAndPassword) => {
 export const logoutUser = () => {
   return request(`${INGREDIENTS_DATA_API_URL}/auth/logout`, 
     {
-      method: "POST",
+      method: Methods.POST,
       headers: { 'Content-Type': 'application/json;charset=utf-8' },
       body: JSON.stringify({ 
         token: localStorage.getItem("refreshToken") 

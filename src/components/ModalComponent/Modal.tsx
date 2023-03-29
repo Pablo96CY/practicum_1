@@ -8,13 +8,14 @@ import { KeyBoard } from "../../utils/enum";
 
 interface IProps {
   onClose: () => void,
-  info?: string | undefined,
+  info?: string,
+  isOrder?: boolean,
   children: ReactNode
 }
 
 const modal = document.getElementById('modal')!;
 
-const Modal = ({ onClose, info, children }: IProps) => {
+const Modal = ({ onClose, info, children, isOrder }: IProps) => {
 
   const escapeClose = useCallback((event: KeyboardEvent) => {
     if (event.key === KeyBoard.ESCAPE) {
@@ -32,7 +33,7 @@ const Modal = ({ onClose, info, children }: IProps) => {
 
   return ReactDOM.createPortal(
     <>
-    <ModalOverlay onClose={onClose}/>
+    <ModalOverlay isBlackBackground={isOrder} onClose={onClose}/>
     <div className={style.modal_container}>
       <div className={style.modal_box}>
         <div className={style.modal_header}>

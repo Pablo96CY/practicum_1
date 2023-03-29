@@ -4,36 +4,42 @@ import { NavLink } from 'react-router-dom';
 
 import { 
   LOGOUT_ROOT, 
-  ORDERS_ROOT 
+  PROFILE_ORDERS_ROOT 
 } from '../../../utils/routes';
 import commonStyle from "../../../utils/commonPageStyles.module.css";
 import localize from '../../../utils/localize';
 
 const ProfileMainPage = () => {
   return (
-    <main className={`${commonStyle.pages_form_container} ${commonStyle.pages_form_container_profile}`}>
+    <main className={commonStyle.pages_form_container_proile}>
       <div className={commonStyle.pages_form_container_profile_inner}>
         <nav className={commonStyle.pages_form_container_profile_tabs}>
           <ul className={commonStyle.pages_form_container_profile_tabs_ul}>
             <li>
               <NavLink to="" end>
-                <span className={`text text_type_main-medium text_color_primary`}>
-                  {localize.Profile}
-                </span>
+                {({ isActive }) => (
+                  <span className={`text text_type_main-medium ${isActive ? "text_color_primary" : "text_color_inactive"}`}>
+                    {localize.Profile}
+                  </span>
+                )}
               </NavLink>
             </li>
             <li>
-              <NavLink to={ORDERS_ROOT}>
-                <span className={`text text_type_main-medium text_color_inactive`}>
-                  {localize.OrdersHistory}
-                </span>
+              <NavLink to={PROFILE_ORDERS_ROOT}>
+                {({ isActive }) => (
+                  <span className={`text text_type_main-medium ${isActive ? "text_color_primary" : "text_color_inactive"}`}>
+                    {localize.OrdersHistory}
+                  </span>
+                )}
               </NavLink>
             </li>
             <li>
               <NavLink to={LOGOUT_ROOT}>
-                <span className={`text text_type_main-medium text_color_inactive`}>
-                  {localize.Exit}
-                </span>
+                {({ isActive }) => (
+                  <span className={`text text_type_main-medium ${isActive ? "text_color_primary" : "text_color_inactive"}`}>
+                    {localize.Exit}
+                  </span>
+                )}
               </NavLink>
             </li>
           </ul>

@@ -1,16 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 
 import { Ingredient } from "../../utils/interfaces";
 import localize from "../../utils/localize";
-import { TRootState } from "../../utils/types";
+import { useSelector } from "../../utils/helpers";
 import style from "./style.module.css";
 
 const IngredientDetails = () => {
   const params = useParams();
 
-  const { data } = useSelector((store: TRootState) => store.burgerIngredients);
+  const { data } = useSelector(store => store.burgerIngredients);
 
   let item = data.find((d: Ingredient) => params.id ? d._id === params.id : d._id === window.location.pathname.split('/')[2]);
 

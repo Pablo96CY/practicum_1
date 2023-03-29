@@ -1,3 +1,4 @@
+import { TBurgerIngredientsActions } from '../../utils/types';
 import { INGREDIENTS_DATA_REQUEST, INGREDIENTS_DATA_SUCCESS, INGREDIENTS_DATA_ERROR } from './actions';
 
 const ingredientsDataState = {
@@ -6,7 +7,7 @@ const ingredientsDataState = {
   data: []
 }
 
-export const ingredientsDataReducer = (state = ingredientsDataState, action) => {
+export const ingredientsDataReducer = (state = ingredientsDataState, action: TBurgerIngredientsActions) => {
   switch (action.type) {
     case INGREDIENTS_DATA_REQUEST:
       return { 

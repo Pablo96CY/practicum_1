@@ -12,15 +12,3 @@ export interface Ingredient {
   image_large?: string,
   __v?: number,
 };
-
-export interface IngredientsProps {
-  items: Ingredient[],
-  bun: Ingredient
-}
-
-export interface IUser {
-  user: {
-    name: string,
-    email: string
-  }
-}
