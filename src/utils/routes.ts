@@ -1,4 +1,5 @@
 export const BASE_ROOT = "/";
+export const BASE_PRODUCTION_ROOT = "/practicum_1/";
 export const OTHERS_ROOT = "*";
 export const LOGIN_ROOT ="/login";
 export const LOGOUT_ROOT = "/logout";

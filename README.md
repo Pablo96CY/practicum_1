@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Base URL: https://pablo96cy.github.io/practicum_1/
+
 ## Available Scripts
 
 In the project directory, you can run:
