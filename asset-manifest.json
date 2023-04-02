@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "./static/css/main.5cde8161.chunk.css",
+    "main.js": "./static/js/main.a7e4bace.chunk.js",
+    "main.js.map": "./static/js/main.a7e4bace.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.deea619b.js",
+    "runtime-main.js.map": "./static/js/runtime-main.deea619b.js.map",
+    "static/css/2.3f1d6950.chunk.css": "./static/css/2.3f1d6950.chunk.css",
+    "static/js/2.3aa3b5ec.chunk.js": "./static/js/2.3aa3b5ec.chunk.js",
+    "static/js/2.3aa3b5ec.chunk.js.map": "./static/js/2.3aa3b5ec.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.949df8f507614c1ba2c1b7354edd3bb1.js": "./precache-manifest.949df8f507614c1ba2c1b7354edd3bb1.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.3f1d6950.chunk.css.map": "./static/css/2.3f1d6950.chunk.css.map",
+    "static/css/main.5cde8161.chunk.css.map": "./static/css/main.5cde8161.chunk.css.map",
+    "static/media/fonts.css": "./static/media/iceland.df042be2.woff",
+    "static/media/success.png": "./static/media/success.5fa6b4ac.png"
+  }
+}
