@@ -6,7 +6,7 @@ import {
   CLEAR_REGISTRATION
 } from './actions';
 
-const initialState = {
+export const initialState = {
   requestRegistration: false,
   successRegistration: false,
   errorRegistration: null,

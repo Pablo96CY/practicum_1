@@ -11,7 +11,7 @@ type TOrderInfoState = {
   order?: TOrder;
 }
 
-const initialState: TOrderInfoState = {
+export const initialState: TOrderInfoState = {
   requestOrderInfo: false,
   errorOrderInfo: undefined,
   order: undefined

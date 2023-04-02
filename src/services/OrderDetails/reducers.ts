@@ -7,7 +7,7 @@ import {
   ORDER_CLOSE_MODAL
  } from "./actions";
 
-const newOrderState = {
+export const newOrderState = {
   isLoad: false,
   isError: false,
   isOpen: false,

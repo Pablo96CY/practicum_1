@@ -13,7 +13,7 @@ type TСonstructorState = {
   bun?: Ingredient
 }
 
-const constructorState: TСonstructorState = {
+export const constructorState: TСonstructorState = {
   items: [],
   bun: undefined,
 };
