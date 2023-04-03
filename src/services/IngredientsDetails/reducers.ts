@@ -1,7 +1,10 @@
 import { TIngredientModalrActions } from '../../utils/types';
-import { INGREDIENT_INFO_MODAL_OPEN, INGREDIENT_INFO_MODAL_CLOSE } from './actions';
+import { 
+  INGREDIENT_INFO_MODAL_OPEN, 
+  INGREDIENT_INFO_MODAL_CLOSE 
+} from './actions';
 
-const ingredientModalState = {
+export const ingredientModalState = {
   isOpen: false,
 };
 

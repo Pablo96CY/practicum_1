@@ -23,7 +23,7 @@ type TAuthorizationState = {
   isLogged: boolean;
 }
 
-const initialState: TAuthorizationState = {
+export const initialState: TAuthorizationState = {
   requestAuthorization: false,
   successAuthorization: false,
   errorAuthorization: undefined,

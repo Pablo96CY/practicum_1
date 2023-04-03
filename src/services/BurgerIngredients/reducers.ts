@@ -1,7 +1,11 @@
 import { TBurgerIngredientsActions } from '../../utils/types';
-import { INGREDIENTS_DATA_REQUEST, INGREDIENTS_DATA_SUCCESS, INGREDIENTS_DATA_ERROR } from './actions';
+import { 
+  INGREDIENTS_DATA_REQUEST, 
+  INGREDIENTS_DATA_SUCCESS, 
+  INGREDIENTS_DATA_ERROR 
+} from './actions';
 
-const ingredientsDataState = {
+export const ingredientsDataState = {
   isLoad: false,
   isError: false,
   data: []

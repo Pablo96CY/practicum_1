@@ -6,7 +6,7 @@ import {
   PERSONAL_ORDERS_MESSAGE
 } from './actions';
 
-const initialState: TOrdersState = {
+export const initialState: TOrdersState = {
   isConnected: false,
   message: null,
   error: null

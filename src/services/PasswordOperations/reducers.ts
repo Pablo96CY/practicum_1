@@ -9,7 +9,7 @@ import {
   CLEAR_RESET_PASSWORD
 } from './actions';
 
-const initialState = {
+export const initialState = {
   requestPassword: false,
   errorPassword: undefined,
   successPassword: false,

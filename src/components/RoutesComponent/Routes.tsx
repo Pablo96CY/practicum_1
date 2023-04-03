@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import { 
+  BASE_PRODUCTION_ROOT,
   BASE_ROOT, 
   FEED_ROOT, 
   FORGOT_PASSWORD_ROOT, 
@@ -52,6 +53,12 @@ const RoutesComponent = () => {
       <Routes location={background || location}>
         <Route 
           path={BASE_ROOT} 
+          element={
+            <MainPage/>
+          } 
+        />
+        <Route 
+          path={BASE_PRODUCTION_ROOT} 
           element={
             <MainPage/>
           } 
